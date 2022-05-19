@@ -15,11 +15,15 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         public RelayCommand ScanViewCommand { get; set; }
 
+        public RelayCommand NeuerKundeCommand { get; set; }
+
 
         public HomeViewModel HomeVm { get; set; }
 
         public ScanViewModel ScanVm { get; set; }
         public ExportViewModel ExportVm { get; set; }
+
+        public NeuerKundeViewModel NeuerKundeVm { get; set; }
 
         private object _currentView;
 
@@ -39,6 +43,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             CurrentView = HomeVm;
             ExportVm = new ExportViewModel();
             ScanVm = new ScanViewModel();
+            NeuerKundeVm = new NeuerKundeViewModel();
             HomeViewCommand = new RelayCommand(x =>
             {
                 CurrentView = HomeVm;
@@ -53,6 +58,12 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             {
                 CurrentView = ScanVm;
             });
+            NeuerKundeCommand = new RelayCommand(x =>
+            {
+                CurrentView = NeuerKundeVm;
+            });
+
+
 
 
         }

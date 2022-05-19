@@ -7,19 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Background="Transparent" Height="30px" Margin="180,73,499,348" Foreground="White">Name:</Label>
-        <Label Background="Transparent" Height="30px" Margin="180,153,499,267" Foreground="White">Beschreibung:</Label>
-        <Label Background="Transparent" Height="30px" Margin="180,225,499,195" Foreground="White">Lieferant:</Label>
-        <Label Background="Transparent" Height="30px" Margin="180,307,499,113" Foreground="White">Markentype:</Label>
-
-        
-
-
-        <TextBox Margin="181,107,469,313" Height="30px" Width="150"></TextBox>
-        <TextBox Margin="180,184,470,236" Height="30px" Width="150" ></TextBox>
         <Label Foreground="White" Margin="434,80,95,345">Markennummer:</Label>
         <ListBox Margin="434,106,95,104"></ListBox>
-        <TextBox Margin="180,257,470,163" Height="30px" Width="150" />
-        <TextBox Margin="180,341,470,79" Height="30px" Width="150" />
     </Grid>
 </UserControl>

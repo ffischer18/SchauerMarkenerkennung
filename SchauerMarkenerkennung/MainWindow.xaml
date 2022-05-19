@@ -128,6 +128,12 @@
                              Style="{StaticResource MenueButtonTheme}"
                              Command="{Binding ScanViewCommand}"
                              Height="50"/>
+                <RadioButton Content="Neuen Kunden erstellen"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenueButtonTheme}"
+                             Command="{Binding NeuerKundeCommand}"
+                             Height="50"/>
 
             </StackPanel>
 

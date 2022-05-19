@@ -26,6 +26,10 @@
                 <view:ScanView></view:ScanView>
 
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:NeuerKundeViewModel}">
+                <view:NeuerKundeView></view:NeuerKundeView>
+
+            </DataTemplate>
         </ResourceDictionary>
         
     </Application.Resources>
