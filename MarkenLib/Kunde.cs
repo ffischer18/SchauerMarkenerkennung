@@ -1,5 +1,4 @@
-﻿using MarkenverwaltungLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +8,9 @@ namespace MarkenLib
 {
     public class Kunde
     {
-        public string AdAdressId { get; set; } = null!;
-        public string? AdAdressNr { get; set; }
+        public int Id { get; set; }
+        //public string AdAdressId { get; set; }
+        public int AdAdressNr { get; set; }
         public string? AdFirmenBezeichnung { get; set; }
         public string? AdStrasse { get; set; }
         public string? AdPostleitzahl { get; set; }

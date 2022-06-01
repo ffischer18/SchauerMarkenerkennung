@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchauerMarkenerkennung", "SchauerMarkenerkennung\SchauerMarkenerkennung.csproj", "{4741FE68-E07A-4EC2-95DB-527F78CAC641}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkenLib", "MarkenLib\MarkenLib.csproj", "{A77D85CA-862F-4ABD-9275-E0BF4F805CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkenLib", "MarkenLib\MarkenLib.csproj", "{75D8FBC6-0B0B-4BFF-A3CB-F73065EE29A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{4741FE68-E07A-4EC2-95DB-527F78CAC641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4741FE68-E07A-4EC2-95DB-527F78CAC641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4741FE68-E07A-4EC2-95DB-527F78CAC641}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A77D85CA-862F-4ABD-9275-E0BF4F805CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A77D85CA-862F-4ABD-9275-E0BF4F805CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A77D85CA-862F-4ABD-9275-E0BF4F805CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A77D85CA-862F-4ABD-9275-E0BF4F805CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D8FBC6-0B0B-4BFF-A3CB-F73065EE29A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D8FBC6-0B0B-4BFF-A3CB-F73065EE29A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D8FBC6-0B0B-4BFF-A3CB-F73065EE29A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D8FBC6-0B0B-4BFF-A3CB-F73065EE29A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

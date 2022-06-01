@@ -44,7 +44,10 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             ExportVm = new ExportViewModel();
             ScanVm = new ScanViewModel();
             NeuerKundeVm = new NeuerKundeViewModel();
-            HomeViewCommand = new RelayCommand(x =>
+
+                 
+
+        HomeViewCommand = new RelayCommand(x =>
             {
                 CurrentView = HomeVm;
             });

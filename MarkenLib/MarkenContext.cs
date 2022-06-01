@@ -1,5 +1,4 @@
-﻿using MarkenverwaltungLib;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +30,11 @@ namespace MarkenLib
                 Console.WriteLine($"    Using connectionString {connectionString}");
                 optionsBuilder.UseSqlServer(connectionString);
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
         }
 
     }

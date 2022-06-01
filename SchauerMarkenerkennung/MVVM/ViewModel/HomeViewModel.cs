@@ -11,7 +11,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         List<string> testList = new List<string>();
         public HomeViewModel()
         {
-            testList.Add("Hallo");
+            testList.Add("Hallooooooooo");
             Test = testList;
         }
 

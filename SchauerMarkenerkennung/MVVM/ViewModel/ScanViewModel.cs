@@ -14,7 +14,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         List<Kunde> testList = new List<Kunde>();
         public ScanViewModel()
         {
-            testList = _db.Kunden.Select(x => x).ToList();
+            //testList = _db.Kunden.Select(x => x).ToList();
         }
 
         private List<Kunde> Kunden;

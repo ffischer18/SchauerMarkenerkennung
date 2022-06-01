@@ -4,17 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SchauerMarkenerkennung.MVVM.View"
+             xmlns:viewModel="clr-namespace:SchauerMarkenerkennung.MVVM.ViewModel"
+
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+   
+
     <Grid>
-            <Label Foreground="White" Margin="121,65,593,355">Kundenname</Label>
-            <TextBox Height="40px" Width="300px" Margin="121,100,379,310"/>
+        
+            <Label Foreground="White" Margin="121,57,578,355">Kundenname</Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,100,379,310" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
             <Label Foreground="White" Margin="121,138,578,282">Kundennummer</Label>
-            <TextBox Height="40px" Width="300px" Margin="121,166,379,244"/>
-
-        <Button Height="30px" Width="120" Margin="291,225,379,194">Kunden hinzufügen</Button>
+            <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,166,379,244"/>
         
+        <Label Foreground="White" Margin="121,57,578,355">Kundenname</Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,100,379,310" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        
+
+        <Button Height="30px" Width="120" Margin="420,364,260,56" Command="{Binding NeuerKundeCommand}" >Kunden hinzufügen</Button>
+
+        <Label Foreground="White" Margin="121,216,578,196">AdStrasse</Label>
+        <Label Foreground="White" Margin="121,279,578,133">AdAdressNr</Label>
+
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,243,379,167" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,304,379,106" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
 
 
     </Grid>

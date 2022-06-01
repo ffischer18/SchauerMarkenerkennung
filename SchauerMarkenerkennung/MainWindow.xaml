@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SchauerMarkenerkennung"
         xmlns:viewModel="clr-namespace:SchauerMarkenerkennung.MVVM.ViewModel"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Height="600" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"

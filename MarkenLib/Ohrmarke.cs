@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarkenverwaltungLib
+namespace MarkenLib
 {
     public  class Ohrmarke
     {
         public int Id { get; set; }
-        public string? KundenId { get; set; } 
+        public int? KundeId { get; set; } 
         public Kunde Kunde { get; set; }
         public string? Beschreibung { get; set; }
-        public DateOnly? Datum { get; set; }
+        public DateTime Datum { get; set; }
         public string? Lieferant { get; set; }
         public string? Markentyp { get; set; }
 

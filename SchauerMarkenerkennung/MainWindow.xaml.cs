@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarkenLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace SchauerMarkenerkennung
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var db = new MarkenContext();
+            db.Database.EnsureCreated();
+
         }
     }
 }
