@@ -12,23 +12,20 @@
 
     <Grid>
         
-            <Label Foreground="White" Margin="121,57,578,355">Kundenname</Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,100,379,310" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-            <Label Foreground="White" Margin="121,138,578,282">Kundennummer</Label>
-            <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,166,379,244"/>
-        
-        <Label Foreground="White" Margin="121,57,578,355">Kundenname</Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,100,379,310" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Foreground="White" Margin="98,38,601,374">Kundenname</Label>
+
+        <Label Foreground="White" Margin="98,108,601,312">Kundennummer</Label>
+            <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,132,404,278"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="95,64,405,346" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
 
-        <Button Height="30px" Width="120" Margin="420,364,260,56" Command="{Binding NeuerKundeCommand}" >Kunden hinzufügen</Button>
+        <Button Height="30px" Width="120" Margin="393,374,287,46" Command="{Binding NeuerKundeCommand}" >Kunden hinzufügen</Button>
 
-        <Label Foreground="White" Margin="121,216,578,196">AdStrasse</Label>
-        <Label Foreground="White" Margin="121,279,578,133">AdAdressNr</Label>
+        <Label Foreground="White" Margin="98,172,601,240">AdStrasse</Label>
+        <Label Foreground="White" Margin="98,237,601,175">AdAdressNr</Label>
 
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,243,379,167" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="121,304,379,106" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,197,404,213" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,265,404,145" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
 

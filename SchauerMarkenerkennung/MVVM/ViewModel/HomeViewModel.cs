@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarkenLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,32 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 {
     public class HomeViewModel
     {
-        List<string> testList = new List<string>();
+        MarkenContext _db = new MarkenContext();
+
+        List<Kunde> KundenList = new List<Kunde>();
+
         public HomeViewModel()
         {
-            testList.Add("Hallooooooooo");
-            Test = testList;
+            KundenList = _db.Kunden.Select(x => x).ToList();
+            Test = KundenList;
         }
 
-        private List<string> Test;
+        private List<Kunde> Test;
 
-        public List<string> test
+        public List<Kunde> test
         {
             get { return Test; }
             set { Test = value; }
         }
+
+        public void KundenListeToString()
+        {
+            foreach (var kunde in KundenList)
+            {
+                
+            }
+        }
+
+
     }
 }

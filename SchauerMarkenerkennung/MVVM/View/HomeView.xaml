@@ -36,7 +36,7 @@
                     </Border.Clip>
 
 
-                    <ListBox ItemsSource="{Binding test}" Background="#3aa0ff" Margin="10,10,10,10">
+                    <ListBox  ItemsSource="{Binding test}" DisplayMemberPath="Display" Background="#3aa0ff" Margin="10,10,10,10">
 
 
 

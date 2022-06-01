@@ -18,8 +18,17 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         public NeuerKundeViewModel()
         {
             //testList = _db.Kunden.Select(x => x).ToList();
-            //addButtonClicked();
+            Test = testList;
         }
+
+        private List<Kunde> Test;
+
+        public List<Kunde> test
+        {
+            get { return Test; }
+            set { Test = value; }
+        }
+
 
         private List<Kunde> Kunden;
 

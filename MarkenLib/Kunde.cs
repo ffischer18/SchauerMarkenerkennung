@@ -18,6 +18,8 @@ namespace MarkenLib
         public string? AdLandname { get; set; }
         public string? AdNationalitaetsKz { get; set; }
         public List<Ohrmarke>? Ohrmarken { get; set; }
+
+        public string Display { get => AdFirmenBezeichnung + "; Addresse: " + AdStrasse; }
         
     }
 }
