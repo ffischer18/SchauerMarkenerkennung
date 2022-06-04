@@ -12,7 +12,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 {
     public class NeuerKundeViewModel : ObservableObject
     {
-        private MarkenContext _db;
+        private MarkenContext _db = new MarkenContext();
 
         public NeuerKundeViewModel()
         {
@@ -106,7 +106,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         private void DoAddCustomer(string obj)
         {
-            _db.Add(new Kunde
+            Console.WriteLine("Geht do wos");
+            _db.Kunden.Add(new Kunde
             {
                 //Id
                 AdAdressNr = NewAdressNr,
