@@ -12,7 +12,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 {
     public class NeuerKundeViewModel : ObservableObject
     {
-        private MarkenContext _db;
+        private MarkenContext _db = new MarkenContext();
 
         public NeuerKundeViewModel()
         {
@@ -106,9 +106,9 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         private void DoAddCustomer(string obj)
         {
-            _db.Add(new Kunde
+            Console.WriteLine($"{NewAdressNr} , {NewCompanyDescription}");
+            Kunde Kunde = new Kunde
             {
-                //Id
                 AdAdressNr = NewAdressNr,
                 AdFirmenBezeichnung = NewCompanyDescription,
                 AdStrasse = NewStreet,
@@ -116,7 +116,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
                 AdOrt = NewCity,
                 AdLandname = NewCountry,
                 AdNationalitaetsKz = NewCountryKz
-            });
+            };
+            _db.Kunden.Add(Kunde);
             _db.SaveChanges();
         }
     }
