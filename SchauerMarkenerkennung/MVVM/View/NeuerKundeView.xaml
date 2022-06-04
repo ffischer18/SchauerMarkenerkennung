@@ -5,31 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SchauerMarkenerkennung.MVVM.View"
              xmlns:viewModel="clr-namespace:SchauerMarkenerkennung.MVVM.ViewModel"
-
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
-
     <Grid>
-        
-            <Label Foreground="White" Margin="98,38,601,374">Kundenname</Label>
+        <Label Foreground="White" Margin="98,20,601,392" Content="AdAdressNr"></Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="98,55,402,355" Text="{Binding SelectedCompanyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="98,108,601,312">Kundennummer</Label>
-            <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,132,404,278"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="95,64,405,346" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
+        <Label Foreground="White" Margin="98,119,565,301" Content="AdFirmenBezeichnung"></Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="98,149,402,261"/>
 
-        <Button Height="30px" Width="120" Margin="393,374,287,46" Command="{Binding NeuerKundeCommand}" >Kunden hinzufügen</Button>
+        <Label Foreground="White" Margin="98,223,601,189" Content="AdStrasse"></Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="98,253,402,157" Text="{Binding SelectedCompanyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="98,172,601,240">AdStrasse</Label>
-        <Label Foreground="White" Margin="98,237,601,175">AdAdressNr</Label>
+        <Label Foreground="White" Margin="98,331,601,81" Content="AdPostleitzahl"></Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="98,361,402,49" Text="{Binding SelectedPLZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,197,404,213" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="96,265,404,145" Text="{Binding SelectedOdSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="432,20,267,392" Content="AdOrt"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,55,68,355" Text="{Binding SelectedCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
+        <Label Foreground="White" Margin="432,119,267,293" Content="AdLandName"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,149,68,261" Text="{Binding SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
+        <Label Foreground="White" Margin="432,228,240,184" Content="AdNationalitaetsKz"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,253,68,157" Text="{Binding SelectedCountryKz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-
-
+        <Button Height="30px" Margin="439,364,223,56" Command="{Binding NeuerKundeCommand}" >Kunden hinzufügen</Button>
+        <Label Foreground="White" Margin="594,362,78,50" Content="" RenderTransformOrigin="1.054,2.414"/>
     </Grid>
 </UserControl>

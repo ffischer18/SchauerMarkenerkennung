@@ -1,4 +1,5 @@
 ﻿using MarkenLib;
+using MvvmTools;
 using SchauerMarkenerkennung.Core;
 using System;
 using System.Collections.Generic;
@@ -11,85 +12,112 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 {
     public class NeuerKundeViewModel : ObservableObject
     {
-        MarkenContext _db = new MarkenContext();
-        public RelayCommand NeuerKundeCommand { get; set; }
+        private MarkenContext _db;
 
-        List<Kunde> testList = new List<Kunde>();
         public NeuerKundeViewModel()
         {
-            //testList = _db.Kunden.Select(x => x).ToList();
-            Test = testList;
+
         }
 
-        private List<Kunde> Test;
-
-        public List<Kunde> test
+        public NeuerKundeViewModel(MarkenContext db)
         {
-            get { return Test; }
-            set { Test = value; }
+            _db = db;
         }
 
-
-        private List<Kunde> Kunden;
-
-        public List<Kunde> kunden
+        private int _newAdressNr = 0;
+        public int NewAdressNr
         {
-            get { return Kunden; }
-            set { Kunden = value; }
-        }
-
-        /*
-        public void addButtonClicked()
-        {
-            NeuerKundeCommand =  new RelayCommand(x =>
-            {
-                
-                Kunde newKunde = new Kunde
-                {
-                    Id = 1,
-                    AdFirmenBezeichnung = selectedOdSupplier,
-                    AdAdressId = "a",
-                    AdAdressNr = "59",
-                    AdLandname = "Österreich",
-                    AdNationalitaetsKz = "AT",
-                    AdOrt="Ried im Innkries",
-                    AdStrasse = "Am Pfarrgrund",
-                    AdPostleitzahl="4910",
-                    
-                    
-                };
-
-                Ohrmarke newOhrmarke = new Ohrmarke
-                {
-                    Beschreibung = "Wurde von Kunde gekauft",
-                    Datum =DateTime.Now,
-                    Id = 1,
-                    Kunde = newKunde,
-                    KundenId = "1",
-                };
-                
-                
-
-                _db.Kunden.Add(newKunde);
-                _db.SaveChanges();
-
-                
-            });
-                
-        }
-*/
-
-        private String selectedOdSupplier;
-
-        public String SelectedOdSupplier
-        {
-            get { return selectedOdSupplier; }
+            get { return _newAdressNr; }
             set
             {
-                selectedOdSupplier = value;
-                OnPropertyChanged();  
+                _newAdressNr = value;
+                OnPropertyChanged(nameof(_newAdressNr));
             }
         }
 
+        private string _newCompanyDescription = "";
+        public string NewCompanyDescription
+        {
+            get { return _newCompanyDescription; }
+            set
+            {
+                _newCompanyDescription = value;
+                OnPropertyChanged(nameof(_newCompanyDescription));
+            }
+        }
+
+        private string _newStreet = "";
+        public string NewStreet
+        {
+            get { return _newStreet; }
+            set
+            {
+                _newStreet = value;
+                OnPropertyChanged(nameof(_newStreet));
+            }
+        }
+
+        private string _newPLZ = "";
+        public string NewPLZ
+        {
+            get { return _newPLZ; }
+            set
+            {
+                _newPLZ = value;
+                OnPropertyChanged(nameof(_newPLZ));
+            }
+        }
+
+        private string _newCity = "";
+        public string NewCity
+        {
+            get { return _newCity; }
+            set
+            {
+                _newCity = value;
+                OnPropertyChanged(nameof(_newCity));
+            }
+        }
+
+        private string _newCountry = "";
+        public string NewCountry
+        {
+            get { return _newCountry; }
+            set
+            {
+                _newCountry = value;
+                OnPropertyChanged(nameof(_newCountry));
+            }
+        }
+
+        private string _newCountryKz = "";
+        public string NewCountryKz
+        {
+            get { return _newCountryKz; }
+            set
+            {
+                _newCountryKz = value;
+                OnPropertyChanged(nameof(_newCountryKz));
+            }
+        }
+
+        public ICommand AddCustomerCommand => new RelayCommand<string>(
+            DoAddCustomer);
+
+        private void DoAddCustomer(string obj)
+        {
+            _db.Add(new Kunde
+            {
+                //Id
+                AdAdressNr = NewAdressNr,
+                AdFirmenBezeichnung = NewCompanyDescription,
+                AdStrasse = NewStreet,
+                AdPostleitzahl = NewPLZ,
+                AdOrt = NewCity,
+                AdLandname = NewCountry,
+                AdNationalitaetsKz = NewCountryKz
+            });
+            _db.SaveChanges();
+        }
     }
 }
