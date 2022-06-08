@@ -27,7 +27,7 @@
         <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,149,68,261" Text="{Binding NewCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Foreground="White" Margin="432,228,240,184" Content="AdNationalitaetsKz"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,253,68,157" Text="{Binding NewCountryKz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,253,68,157"/>
 
         <Button Height="30px" Margin="439,364,223,56" Command="{Binding AddCustomerCommand}" >Kunden hinzufügen</Button>
         <Label Foreground="White" Margin="594,362,78,50" Content="" RenderTransformOrigin="1.054,2.414"/>
