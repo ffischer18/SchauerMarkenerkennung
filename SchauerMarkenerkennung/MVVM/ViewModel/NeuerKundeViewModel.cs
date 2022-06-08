@@ -106,8 +106,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         private void DoAddCustomer(string obj)
         {
-            Console.WriteLine($"{NewAdressNr} , {NewCompanyDescription}");
-            Kunde Kunde = new Kunde
+            Console.WriteLine("Geht do wos");
+            _db.Kunden.Add(new Kunde
             {
                 AdAdressNr = NewAdressNr,
                 AdFirmenBezeichnung = NewCompanyDescription,

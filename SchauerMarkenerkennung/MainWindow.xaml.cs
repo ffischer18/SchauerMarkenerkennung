@@ -30,7 +30,7 @@ namespace SchauerMarkenerkennung
         {
             var db = new MarkenContext();
             db.Database.EnsureCreated();
-
+            
         }
     }
 }

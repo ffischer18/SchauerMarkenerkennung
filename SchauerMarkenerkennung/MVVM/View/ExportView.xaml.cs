@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarkenLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,27 @@ namespace SchauerMarkenerkennung.MVVM.View
     /// </summary>
     public partial class ExportView : UserControl
     {
+        MarkenContext _db = new MarkenContext();
         public ExportView()
         {
             InitializeComponent();
+            TimeEntriesGrid();
+        }
+
+        private void TimeEntriesGrid()
+        {
+            exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
+            {
+                Id = x.Id,
+                AdAdressNr = x.AdAdressNr,
+                AdFirmenBezeichnung = x.AdFirmenBezeichnung,
+                AdStrasse = x.AdStrasse,
+                AdPostleitzahl = x.AdPostleitzahl,
+                AdOrt = x.AdOrt,
+                AdLandname = x.AdLandname,
+                AdNationalitaetsKz = x.AdNationalitaetsKz
+            })
+            .ToList();
         }
     }
 }
