@@ -10,7 +10,6 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
     public class HomeViewModel
     {
         MarkenContext _db = new MarkenContext();
-
         List<Kunde> KundenList = new List<Kunde>();
 
         public HomeViewModel()
@@ -27,12 +26,18 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             set { Test = value; }
         }
 
-        public void KundenListeToString()
+
+        public void filterKundenFirmaName()
         {
-            foreach (var kunde in KundenList)
+            List<Kunde> kundenFirmaNames = new List<Kunde>();
+            foreach(var kunde in KundenList)
             {
-                
+                if (kunde.AdFirmenBezeichnung.Contains("a"))
+                {
+                    kundenFirmaNames.Add(kunde);
+                }
             }
+            KundenList = kundenFirmaNames;
         }
 
 

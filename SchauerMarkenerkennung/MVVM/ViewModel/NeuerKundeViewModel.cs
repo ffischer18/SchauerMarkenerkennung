@@ -109,7 +109,6 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             Console.WriteLine("Geht do wos");
             _db.Kunden.Add(new Kunde
             {
-                //Id
                 AdAdressNr = NewAdressNr,
                 AdFirmenBezeichnung = NewCompanyDescription,
                 AdStrasse = NewStreet,
@@ -117,7 +116,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
                 AdOrt = NewCity,
                 AdLandname = NewCountry,
                 AdNationalitaetsKz = NewCountryKz
-            });
+            };
+            _db.Kunden.Add(Kunde);
             _db.SaveChanges();
         }
     }
