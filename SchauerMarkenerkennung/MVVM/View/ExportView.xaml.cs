@@ -19,13 +19,14 @@ namespace SchauerMarkenerkennung.MVVM.View
     /// <summary>
     /// Interaction logic for ExportView.xaml
     /// </summary>
-    public partial class ExportView : UserControl
+    public partial  class ExportView : UserControl
     {
         MarkenContext _db = new MarkenContext();
         public ExportView()
         {
             InitializeComponent();
             TimeEntriesGrid();
+
         }
 
         private void TimeEntriesGrid()
