@@ -121,26 +121,37 @@ namespace SchauerMarkenerkennung.MVVM.View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void csv()
         {
-            if (exportDataGrid.Items.Count > 0)
-            {
-
-                List<string> celles = getString();
-                List<string> actualLines = new List<string>();
-                string lineA = "";
-                foreach (string line in celles)
-                {
-                    lineA = lineA + ";" + line;
-                }
-
-
-                save(lineA);
-
-            }
+            var csv = exportDataGrid.Items;
         }
 
-        public void save(string line)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var csv = exportDataGrid.ItemsSource;
+
+            List<Kunde> list = new List<Kunde>();
+            foreach(var item in csv)
+            {
+               ExportDataGrid kundeItem = (ExportDataGrid)item;
+                Kunde kunde = new Kunde
+                {
+                    Id = kundeItem.Id,
+                    AdAdressNr = kundeItem.AdAdressNr,
+                    AdFirmenBezeichnung = kundeItem.AdFirmenBezeichnung,
+                    AdLandname = kundeItem.AdLandname,
+                    AdOrt = kundeItem.AdOrt,
+                    AdNationalitaetsKz = kundeItem.AdNationalitaetsKz,
+                    AdPostleitzahl = kundeItem.AdPostleitzahl,
+                    AdStrasse = kundeItem.AdStrasse,
+                };
+               list.Add(kunde);
+            }
+
+            save(list);
+        }
+
+        public void save(List<Kunde> lines)
         {
             var dlgSave = new SaveFileDialog
             {
@@ -152,41 +163,32 @@ namespace SchauerMarkenerkennung.MVVM.View
             if (true != dlgSave.ShowDialog()) return;
 
             string filename = dlgSave.FileName;
+            string header = "Id;AdAdressNr;AdFirmenBezeichnung;AdStrasse;AdPostleitzahl;AdOrt;AdLandname;AdNationalitaetsKz";
             var writer = new StreamWriter(filename, false, Encoding.GetEncoding("ISO-8859-1"));
-            writer.WriteLine(line);
+            writer.WriteLine(header);
+
+            foreach (var item in lines)
+            {
+                string kunde = item.Id + ";" + item.AdAdressNr + ";" + item.AdFirmenBezeichnung + ";" + item.AdStrasse + ";" + item.AdPostleitzahl + ";" + item.AdOrt + ";" + item.AdLandname + ";" + item.AdNationalitaetsKz;
+                writer.WriteLine(kunde);
+            }
+            
             writer.Close();
         }
 
-        /*
-       private void MenuSave_Click(object sender, RoutedEventArgs e)
-    {
-      var dlgSave = new SaveFileDialog
-      {
-        DefaultExt = "csv",
-        FileName = "persons.csv",
-        Filter = "CSV files|*.csv|All files|*.*",
-        InitialDirectory = @"C:\Temp"
-      };
-      if (true != dlgSave.ShowDialog()) return;
-
-      string filename = dlgSave.FileName;
-      var writer = new StreamWriter(filename, false, Encoding.GetEncoding("ISO-8859-1"));
-      foreach (Person person in lstNames.Items)
-      {
-        writer.WriteLine(person.AsCsvString());
-      }
-      writer.Close();
-    }
-         
-         
-        */
+       
         public List<string> getString()
         {
-            List<string> strings = new List<string>();
-            for (int i = 0; i < exportDataGrid.Items.Count; i++)
+            List<Kunde> k = _db.Kunden.Where(x => x.AdAdressNr == 0).Select(x => x).ToList();
+            foreach(var kunde in k)
             {
-                string line = exportDataGrid.Items[i].ToString();
-                Console.WriteLine(line);
+                _db.Kunden.Remove(kunde);
+                _db.SaveChanges();
+            }
+            List<string> strings = new List<string>();
+            int count = exportDataGrid.Items.Count;
+            
+               
 
                 var rows = GetDataGridRows(exportDataGrid);
 
@@ -198,13 +200,13 @@ namespace SchauerMarkenerkennung.MVVM.View
                         if (column.GetCellContent(r) is TextBlock)
                         {
                             TextBlock cellContent = column.GetCellContent(r) as TextBlock;
-                            if (!strings.Contains(cellContent.Text))
+                           // if (!strings.Contains(cellContent.Text))
                                 strings.Add(cellContent.Text);
                         }
                     }
                 }
 
-            }
+            
 
             return strings;
 
