@@ -116,8 +116,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
                 AdOrt = NewCity,
                 AdLandname = NewCountry,
                 AdNationalitaetsKz = NewCountryKz
-            };
-            _db.Kunden.Add(Kunde);
+            });
+            //_db.Kunden.Add(Kunde);
             _db.SaveChanges();
         }
     }

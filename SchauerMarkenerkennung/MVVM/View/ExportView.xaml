@@ -9,15 +9,22 @@
              
     <Grid>
 
-        <DataGrid Name="exportDataGrid" Margin="84,25,84,100" ItemsSource="{Binding ExportDataGrid}">
+        <TextBox Name="Search"  KeyUp="Search_KeyUp" Width="226"
+                     Height="40"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="48,10,0,0"
+                    TextAlignment="Center"
+                 
+                     />
+        <DataGrid Name="exportDataGrid" Margin="50,63,41,62" ItemsSource="{Binding ExportDataGrid}">
+
         </DataGrid>
-        <RadioButton Content="Export"
-                             Foreground="Black"
-                             Background="White"
-                             FontSize="14"
-                             Style="{StaticResource MenueButtonTheme}"
-                             Height="50"
-                             Command="{Binding ExportViewCommand}" Margin="572,382,84,18"/>
-            
+        <Button Content="Export" Click="Button_Click" Margin="569,407,41,10"></Button>
+        <RadioButton Name="Firmenbezeichnung" Content="Firmenbezeichnung" HorizontalAlignment="Left" Margin="281,24,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="PLZ" Content="PLZ" HorizontalAlignment="Left" Margin="418,25,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Adressnummer" Content="Addressnummer"  HorizontalAlignment="Left" Margin="481,25,0,0" VerticalAlignment="Top"/>
+
+
     </Grid>
 </UserControl>
