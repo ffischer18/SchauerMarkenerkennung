@@ -35,7 +35,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             {
                 Id = x.Id,
                 AdAdressNr = x.AdAdressNr,
-                AdFirmenBezeichnung = x.AdFirmenBezeichnung,
+                AdFirmenBezeichnung = x.AdFirmenBezeichnung, 
                 AdStrasse = x.AdStrasse,
                 AdPostleitzahl = x.AdPostleitzahl,
                 AdOrt = x.AdOrt,
