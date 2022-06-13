@@ -40,7 +40,6 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         {
             exportDataGrid = _db.Kunden.Select(x => new ExportDataGrid
             {
-                Id = x.Id,
                 AdAdressNr = x.AdAdressNr,
                 AdFirmenBezeichnung = x.AdFirmenBezeichnung,
                 AdStrasse = x.AdStrasse,

@@ -43,7 +43,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             
             exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
             {
-                Id = x.Id,
+                AdAdressId = x.AdAdressId,
                 AdAdressNr = x.AdAdressNr,
                 AdFirmenBezeichnung = x.AdFirmenBezeichnung, 
                 AdStrasse = x.AdStrasse,
@@ -57,6 +57,8 @@ namespace SchauerMarkenerkennung.MVVM.View
             .ToList();
         }
 
+
+
         private void Search_KeyUp(object sender, KeyEventArgs e)
         {
             string searchInput = Search.Text;
@@ -67,16 +69,19 @@ namespace SchauerMarkenerkennung.MVVM.View
                     TimeEntriesGrid();
                     return;
                 }
+               
                 exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdFirmenBezeichnung.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
-                    Id = x.Id,
+                    AdAdressId = x.AdAdressId,
                     AdAdressNr = x.AdAdressNr,
                     AdFirmenBezeichnung = x.AdFirmenBezeichnung,
                     AdStrasse = x.AdStrasse,
                     AdPostleitzahl = x.AdPostleitzahl,
                     AdOrt = x.AdOrt,
                     AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz
+                    AdNationalitaetsKz = x.AdNationalitaetsKz,
+                    Markennummern = x.ohrmarken
+
                 })
             .ToList();
             }
@@ -89,14 +94,14 @@ namespace SchauerMarkenerkennung.MVVM.View
                 }
                 exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdPostleitzahl.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
-                    Id = x.Id,
                     AdAdressNr = x.AdAdressNr,
                     AdFirmenBezeichnung = x.AdFirmenBezeichnung,
                     AdStrasse = x.AdStrasse,
                     AdPostleitzahl = x.AdPostleitzahl,
                     AdOrt = x.AdOrt,
                     AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz
+                    AdNationalitaetsKz = x.AdNationalitaetsKz,
+                    Markennummern = x.ohrmarken
                 })
             .ToList();
 
@@ -113,15 +118,14 @@ namespace SchauerMarkenerkennung.MVVM.View
                 {
                     exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdAdressNr == (int.Parse(searchInput))).Select(x => new ExportDataGrid
                     {
-                        Id = x.Id,
                         AdAdressNr = x.AdAdressNr,
                         AdFirmenBezeichnung = x.AdFirmenBezeichnung,
                         AdStrasse = x.AdStrasse,
                         AdPostleitzahl = x.AdPostleitzahl,
                         AdOrt = x.AdOrt,
                         AdLandname = x.AdLandname,
-                        AdNationalitaetsKz = x.AdNationalitaetsKz
-                        
+                        AdNationalitaetsKz = x.AdNationalitaetsKz,
+                        Markennummern = x.ohrmarken
                     })
                 .ToList();
                 }
@@ -147,7 +151,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                ExportDataGrid kundeItem = (ExportDataGrid)item;
                 Kunde kunde = new Kunde
                 {
-                    Id = kundeItem.Id,
                     AdAdressNr = kundeItem.AdAdressNr,
                     AdFirmenBezeichnung = kundeItem.AdFirmenBezeichnung,
                     AdLandname = kundeItem.AdLandname,
@@ -205,13 +208,11 @@ namespace SchauerMarkenerkennung.MVVM.View
 
                 foreach (DataGridRow r in rows)
                 {
-                    //   DataRowView rv = (DataRowView)r.Item;
                     foreach (DataGridColumn column in exportDataGrid.Columns)
                     {
                         if (column.GetCellContent(r) is TextBlock)
                         {
                             TextBlock cellContent = column.GetCellContent(r) as TextBlock;
-                           // if (!strings.Contains(cellContent.Text))
                                 strings.Add(cellContent.Text);
                         }
                     }

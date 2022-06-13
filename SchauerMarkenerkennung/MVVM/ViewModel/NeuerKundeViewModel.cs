@@ -101,14 +101,26 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             }
         }
 
+        private string _adAddressId = "";
+        public string AdAddressId
+        {
+            get { return _adAddressId; }
+            set
+            {
+                _adAddressId = value;
+                OnPropertyChanged(nameof(_adAddressId));
+            }
+        }
+
+
         public ICommand AddCustomerCommand => new RelayCommand<string>(
             DoAddCustomer);
 
         private void DoAddCustomer(string obj)
         {
-            Console.WriteLine("Geht do wos");
             _db.Kunden.Add(new Kunde
             {
+                AdAdressId = AdAddressId,
                 AdAdressNr = NewAdressNr,
                 AdFirmenBezeichnung = NewCompanyDescription,
                 AdStrasse = NewStreet,

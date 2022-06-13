@@ -20,7 +20,7 @@
         <DataGrid Name="exportDataGrid" Margin="50,63,41,62" ItemsSource="{Binding ExportDataGrid}">
 
         </DataGrid>
-        <Button Content="Export" Click="Button_Click" Margin="569,407,41,10"></Button>
+        <Button Content="Export" Click="Button_Click" Margin="569,445,41,0"></Button>
         <RadioButton Name="Firmenbezeichnung" Content="Firmenbezeichnung" HorizontalAlignment="Left" Margin="281,24,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="PLZ" Content="PLZ" HorizontalAlignment="Left" Margin="418,25,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="Adressnummer" Content="Addressnummer"  HorizontalAlignment="Left" Margin="481,25,0,0" VerticalAlignment="Top"/>

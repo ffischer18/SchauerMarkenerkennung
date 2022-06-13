@@ -9,7 +9,7 @@ namespace MarkenLib
     public class Kunde
     {
         public int Id { get; set; }
-        public string AdAdressId { get; set; }
+        public string AdAdressId { get; set; } = null!;
         public int AdAdressNr { get; set; }
         public string? AdFirmenBezeichnung { get; set; }
         public string? AdStrasse { get; set; }
@@ -29,7 +29,7 @@ namespace MarkenLib
 
             foreach (var item in Ohrmarken)
             {
-                ohrmarkenString = ohrmarkenString + ";" + item.MarkenNummer;
+                ohrmarkenString = ohrmarkenString + item.MarkenNummer + ";";
             }
 
             return ohrmarkenString;
