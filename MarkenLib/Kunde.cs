@@ -9,7 +9,7 @@ namespace MarkenLib
     public class Kunde
     {
         public int Id { get; set; }
-        //public string AdAdressId { get; set; }
+        public string AdAdressId { get; set; }
         public int AdAdressNr { get; set; }
         public string? AdFirmenBezeichnung { get; set; }
         public string? AdStrasse { get; set; }

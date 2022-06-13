@@ -26,7 +26,7 @@ namespace MarkenLib
             Console.WriteLine($"Db OnConfiguring: IsConfiguring: IsConfigured={optionsBuilder.IsConfigured}");
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionString = @"server=(LocalDB)\mssqllocaldb;attachdbfilename=C:\Temp\Ohrmarken.mdf;database=Ohrmarken;integrated security=True;MultipleActiveResultSets=True;";
+                string connectionString = @"server=(LocalDB)\mssqllocaldb;attachdbfilename=C:\Temp\Ohrmarken.mdf;database=Ohrmarken3;integrated security=True;MultipleActiveResultSets=True;";
                 Console.WriteLine($"    Using connectionString {connectionString}");
                 optionsBuilder.UseSqlServer(connectionString);
             }

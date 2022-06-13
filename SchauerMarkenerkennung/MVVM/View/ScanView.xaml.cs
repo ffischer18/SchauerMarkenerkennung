@@ -22,6 +22,7 @@ namespace SchauerMarkenerkennung.MVVM.View
     /// </summary>
     public partial class ScanView : UserControl
     {
+
         MarkenContext _db = new MarkenContext();
 
         bool isStarted = false;
@@ -33,7 +34,7 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void FillLbWithCustomers()
         {
-            lbCustomers.ItemsSource = _db.Kunden.Select(x => x.AdAdressNr).ToList();
+            lbCustomers.ItemsSource = _db.Kunden.Select(x => x.AdAdressId).ToList();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,92 @@ namespace SchauerMarkenerkennung.MVVM.View
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             lbNumbers.Items.Remove(lbNumbers.SelectedItem);
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (CeckTextBoxes())
+            {
+                string customerId = lbCustomers.SelectedItem + "";
+                int cusId = _db.Kunden.Where(x => x.AdAdressId == customerId)
+                    .Select(x => x.Id)
+                    .FirstOrDefault();
+
+                foreach (string oNumber in lbNumbers.Items)
+                {
+                    var ohrmarke = new Ohrmarke
+                    {
+                        Beschreibung = tbBeschreibung.Text,
+                        Datum = DateTime.Now,
+                        KundeId = cusId,
+                        Lieferant = tbBeschreibung.Text,
+                        Markentyp = tbBeschreibung.Text
+                    };
+                    _db.Ohrmarken.Add(ohrmarke);
+                }
+                _db.SaveChanges();
+            }
+            else
+            {
+                lblTestlabel.Content = "FILL ALL REQUIRED FIELDS!";
+            }
+        }
+
+        private bool CeckTextBoxes()
+        {
+            bool allFieldsFilled = true;
+            if (String.IsNullOrEmpty(tbBeschreibung.Text))
+            {
+                lblPbeschreibung.Visibility = Visibility.Visible;
+                allFieldsFilled = false;
+            }
+            else
+            {
+                lblPbeschreibung.Visibility = Visibility.Hidden;
+                allFieldsFilled = true;
+            }
+            if (String.IsNullOrEmpty(tbLieferant.Text))
+            {
+                lblPlieferant.Visibility = Visibility.Visible;
+                allFieldsFilled = false;
+            }
+            else
+            {
+                lblPlieferant.Visibility = Visibility.Hidden;
+                allFieldsFilled = true;
+            }
+            if (String.IsNullOrEmpty(tbType.Text))
+            {
+                lblPtyp.Visibility = Visibility.Visible;
+                allFieldsFilled = false;
+            }
+            else
+            {
+                lblPtyp.Visibility = Visibility.Hidden;
+                allFieldsFilled = true;
+            }
+            if (lbNumbers.Items.Count < 1)
+            {
+                lblPnummern.Visibility = Visibility.Visible;
+                allFieldsFilled = false;
+            }
+            else
+            {
+                lblPnummern.Visibility = Visibility.Hidden;
+                allFieldsFilled = true;
+            }
+            if (lbCustomers.SelectedItem == null)
+            {
+                lblPKunden.Visibility = Visibility.Visible;
+                allFieldsFilled = false;
+            }
+            else
+            {
+                lblPKunden.Visibility = Visibility.Hidden;
+                allFieldsFilled = true;
+            }
+
+            return allFieldsFilled;
         }
     }
 }

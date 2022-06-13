@@ -7,17 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox Margin="236,392,419,40" Name="lbCustomers"></ListBox>
-        <Label Foreground="White" Margin="434,80,95,345">Markennummer:</Label>
-        <ListBox Name="lbNumbers" Margin="434,106,95,104"></ListBox>
+        <Label Foreground="White" Margin="584,73,80,352" Content="Markennummern:"/>
+        <ListBox Name="lbNumbers" Margin="584,105,80,105"></ListBox>
         <Button Name="btnStart"  Click="ButtonStart_Click" Content="Start" HorizontalAlignment="Left" 
-                Width="50" Margin="83,133,0,0" VerticalAlignment="Top"/>
+                Width="50" Margin="410,146,0,0" VerticalAlignment="Top"/>
         <Button Name="btnStop" IsEnabled="false" Click="ButtonStop_Click" Content="Stop" HorizontalAlignment="Left"
-                Width="50" Margin="139,133,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.154,-0.09"/>
+                Width="50" Margin="466,146,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.154,-0.09"/>
         <Button Content="Delete" Click="ButtonDel_Click" HorizontalAlignment="Left" Width="50" 
-                Margin="194,133,0,0"  VerticalAlignment="Top"/>
-        <TextBox  HorizontalAlignment="Left" IsEnabled="False" Margin="83,173,0,0" TextWrapping="Wrap"
+                Margin="521,146,0,0"  VerticalAlignment="Top"/>
+        <TextBox  HorizontalAlignment="Left" IsEnabled="False" Margin="410,186,0,0" TextWrapping="Wrap"
                   TextChanged="tbInput_TextChanged"
                   Name="tbInput" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <Label Foreground="White" Margin="24,225,640,200" Content="Kunden"/>
+        <Button Content="Save" Click="ButtonSave_Click" HorizontalAlignment="Left" Margin="695,408,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Foreground="White" Content="" Name="lblTestlabel" HorizontalAlignment="Left" Margin="390,18,0,0" VerticalAlignment="Top"/>
+
+
+        <Label Foreground="White" Margin="24,31,640,394" Content="Lieferant"/>
+        <TextBox  HorizontalAlignment="Left"  Margin="32,61,0,0" TextWrapping="Wrap"
+            Name="tbLieferant" VerticalAlignment="Top" Width="120"/>
+
+        <Label Foreground="White" Margin="24,97,640,328" Content="MarkenTyp"/>
+        <TextBox  HorizontalAlignment="Left"  Margin="32,127,0,0" TextWrapping="Wrap"
+            Name="tbType" VerticalAlignment="Top" Width="120"/>
+
+        <Label Foreground="White" Margin="24,165,640,260" Content="Beschreibung"/>
+        <TextBox  HorizontalAlignment="Left"  Margin="32,195,0,0" TextWrapping="Wrap"
+            Name="tbBeschreibung" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="32,255,0,0" VerticalAlignment="Top" Width="120" Name="lbCustomers"/>
+        <Label Name="lblPbeschreibung" Visibility="Hidden" Content="Pflichtfeld!" Foreground="Red" HorizontalAlignment="Left" Margin="152,191,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblPtyp" Visibility="Hidden" Content="Pflichtfeld!" Foreground="Red" HorizontalAlignment="Left" Margin="152,123,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblPlieferant" Visibility="Hidden" Content="Pflichtfeld!" Foreground="Red" HorizontalAlignment="Left" Margin="152,57,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblPKunden" Visibility="Hidden" Content="Pflichtfeld!" Foreground="Red" HorizontalAlignment="Left" Margin="152,253,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblPnummern" Visibility="Hidden" Content="Pflichtfeld!" Foreground="Red" HorizontalAlignment="Left" Margin="619,345,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </UserControl>
