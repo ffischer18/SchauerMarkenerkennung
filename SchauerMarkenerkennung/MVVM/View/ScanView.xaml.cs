@@ -34,7 +34,10 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void FillLbWithCustomers()
         {
-            lbCustomers.ItemsSource = _db.Kunden.Select(x => x.AdAdressId).ToList();
+            foreach(string s in _db.Kunden.Select(x => x.AdAdressId).ToList())
+            {
+                lbCustomers.Items.Add(s);
+            }
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
@@ -105,16 +108,17 @@ namespace SchauerMarkenerkennung.MVVM.View
                     _db.Ohrmarken.Add(ohrmarke);
                 }
                 _db.SaveChanges();
-            }
-            else
-            {
-                lblTestlabel.Content = "FILL ALL REQUIRED FIELDS!";
+                ClearTextBoxes();
             }
         }
 
         private void ClearTextBoxes()
         {
-
+            tbBeschreibung.Text = "";
+            tbLieferant.Text = "";
+            tbInput.Text = "";
+            tbType.Text = "";
+            lbNumbers.Items.Clear();
         }
 
         private bool CeckTextBoxes()
