@@ -15,7 +15,7 @@ namespace MarkenLib
         public string? AdStrasse { get; set; }
         public string? AdPostleitzahl { get; set; }
         public string? AdOrt { get; set; }
-        public string? AdLandname { get; set; }
+        public string? AdLandname { get; set; } 
         public string? AdNationalitaetsKz { get; set; }
         public List<Ohrmarke>? Ohrmarken { get; set; }
 
