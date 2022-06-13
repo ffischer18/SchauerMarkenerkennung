@@ -21,8 +21,8 @@ namespace MarkenLib
                 AdPostleitzahl = "4731",
                 AdOrt = "Prambachkirchen",
                 AdLandname = "AUSTRIA",
-                AdNationalitaetsKz = "AUT"
-                });
+                AdNationalitaetsKz = "AUT",
+            }) ;
 
             modelBuilder.Entity<Kunde>().HasData(new Kunde
 

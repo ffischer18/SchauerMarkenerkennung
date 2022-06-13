@@ -17,5 +17,6 @@ namespace MarkenLib
         public string? Lieferant { get; set; }
         public string? Markentyp { get; set; }
 
+
     }
 }

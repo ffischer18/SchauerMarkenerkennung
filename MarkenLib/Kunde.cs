@@ -20,6 +20,19 @@ namespace MarkenLib
         public List<Ohrmarke>? Ohrmarken { get; set; }
 
         public string Display { get => AdFirmenBezeichnung + "; Addresse: " + AdStrasse; }
-        
+
+        public string ohrmarken { get => Ohrmarkennummer(); }
+
+        public string Ohrmarkennummer()
+        {
+            string ohrmarkenString = "";
+
+            foreach (var item in Ohrmarken)
+            {
+                ohrmarkenString = ohrmarkenString + ";" + item.Id.ToString();
+            }
+
+            return ohrmarkenString;
+        }
     }
 }

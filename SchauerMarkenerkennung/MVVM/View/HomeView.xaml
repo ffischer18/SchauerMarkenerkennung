@@ -36,11 +36,7 @@
                     </Border.Clip>
 
 
-                    <ListBox  ItemsSource="{Binding test}" DisplayMemberPath="Display" Background="#3aa0ff" Margin="10,10,10,10">
-
-
-
-                    </ListBox>
+                    <ListBox Name="Kunden" SelectionChanged="Kunden_SelectionChanged" DisplayMemberPath="Display" Background="#3aa0ff" Margin="10,10,10,10"></ListBox>
 
 
                 </Border>

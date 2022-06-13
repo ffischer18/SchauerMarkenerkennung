@@ -16,5 +16,6 @@ namespace SchauerMarkenerkennung
         public string AdOrt { get; set; } = null!;
         public string AdLandname { get; set; } = null!;
         public string AdNationalitaetsKz { get; set; } = null!;
+        public string Markennummern { get; set; } = null!;
     }
 }

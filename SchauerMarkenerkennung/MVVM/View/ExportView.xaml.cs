@@ -34,6 +34,13 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void TimeEntriesGrid()
         {
+            List<Kunde> allCustomers = _db.Kunden.ToList();
+            foreach(Kunde kunde in allCustomers)
+            {
+                List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeId == kunde.Id).ToList();
+                kunde.Ohrmarken = allOhrmars;
+            }
+            
             exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
             {
                 Id = x.Id,
@@ -43,7 +50,9 @@ namespace SchauerMarkenerkennung.MVVM.View
                 AdPostleitzahl = x.AdPostleitzahl,
                 AdOrt = x.AdOrt,
                 AdLandname = x.AdLandname,
-                AdNationalitaetsKz = x.AdNationalitaetsKz
+                AdNationalitaetsKz = x.AdNationalitaetsKz,
+                Markennummern = x.ohrmarken
+                
             })
             .ToList();
         }
@@ -99,6 +108,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     TimeEntriesGrid();
                     return;
                 }
+                
                 try
                 {
                     exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdAdressNr == (int.Parse(searchInput))).Select(x => new ExportDataGrid
@@ -111,6 +121,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                         AdOrt = x.AdOrt,
                         AdLandname = x.AdLandname,
                         AdNationalitaetsKz = x.AdNationalitaetsKz
+                        
                     })
                 .ToList();
                 }

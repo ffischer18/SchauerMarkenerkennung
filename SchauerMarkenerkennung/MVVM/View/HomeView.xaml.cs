@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarkenLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,30 @@ namespace SchauerMarkenerkennung.MVVM.View
     /// </summary>
     public partial class HomeView : UserControl
     {
+        MarkenContext _db = new MarkenContext();
+
         public HomeView()
         {
             InitializeComponent();
+            fillListBoxOverViewWithCustomer();
+
+
+        }
+
+        public void fillListBoxOverViewWithCustomer()
+        {
+            Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
+        }
+
+        
+
+        private void Kunden_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
+            Kunde selectedItem = Kunden.Items[Kunden.SelectedIndex] as Kunde;
+            _db.Kunden.Remove(selectedItem);
+            _db.SaveChanges();
+            
         }
     }
 }
