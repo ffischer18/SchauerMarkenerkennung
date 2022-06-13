@@ -98,6 +98,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                         Beschreibung = tbBeschreibung.Text,
                         Datum = DateTime.Now,
                         KundeId = cusId,
+                        MarkenNummer = oNumber,
                         Lieferant = tbBeschreibung.Text,
                         Markentyp = tbBeschreibung.Text
                     };
@@ -109,6 +110,11 @@ namespace SchauerMarkenerkennung.MVVM.View
             {
                 lblTestlabel.Content = "FILL ALL REQUIRED FIELDS!";
             }
+        }
+
+        private void ClearTextBoxes()
+        {
+
         }
 
         private bool CeckTextBoxes()

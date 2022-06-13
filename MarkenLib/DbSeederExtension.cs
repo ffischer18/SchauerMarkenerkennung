@@ -42,6 +42,7 @@ namespace MarkenLib
             modelBuilder.Entity<Ohrmarke>().HasData(new Ohrmarke
             {
                 Id = 1,
+                MarkenNummer = "091063412848",
                 Beschreibung = "Umtausch",
                 Datum = DateTime.Now,
                 KundeId = 1,

@@ -29,7 +29,7 @@ namespace MarkenLib
 
             foreach (var item in Ohrmarken)
             {
-                ohrmarkenString = ohrmarkenString + ";" + item.Id.ToString();
+                ohrmarkenString = ohrmarkenString + ";" + item.MarkenNummer;
             }
 
             return ohrmarkenString;
