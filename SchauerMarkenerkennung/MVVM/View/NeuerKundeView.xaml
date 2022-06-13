@@ -17,8 +17,8 @@
         <Label Foreground="White" Margin="62,205,633,208" Content="AdStrasse"></Label>
         <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,199,438,211" Text="{Binding NewStreet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="66,271,633,148" Content="AdPostleitzahl"></Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,269,438,141" Text="{Binding NewPLZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="66,271,615,148" Content="AdPostleitzahl"></Label>
+        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,270,438,140" Text="{Binding NewPLZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Foreground="White" Margin="432,75,240,337" Content="AdOrt"/>
         <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,73,68,337" Text="{Binding NewCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -26,7 +26,7 @@
         <Label Foreground="White" Margin="432,139,240,273" Content="AdLandName"/>
         <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,140,68,270" Text="{Binding NewCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="432,265,240,160" Content="AdAddressId"/>
+        <Label Foreground="White" Margin="432,267,240,158" Content="AdAddressId"/>
         <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,269,68,141" Text="{Binding AdAddressId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Foreground="White" Margin="432,204,218,206" Content="AdNationalitaetsKz"/>
