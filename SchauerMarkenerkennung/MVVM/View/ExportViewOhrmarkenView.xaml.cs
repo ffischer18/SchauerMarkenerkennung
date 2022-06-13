@@ -33,24 +33,17 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void TimeEntriesGrid()
         {
-            List<Kunde> allCustomers = _db.Kunden.ToList();
-            foreach (Kunde kunde in allCustomers)
-            {
-                List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeId == kunde.Id).ToList();
-                kunde.Ohrmarken = allOhrmars;
-            }
+           
 
-            exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
+            exportDataGrid.ItemsSource = _db.Ohrmarken.Select(x => new ExportOhrmarkenDataGrid
             {
-                AdAdressId = x.AdAdressId,
-                AdAdressNr = x.AdAdressNr,
-                AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                AdStrasse = x.AdStrasse,
-                AdPostleitzahl = x.AdPostleitzahl,
-                AdOrt = x.AdOrt,
-                AdLandname = x.AdLandname,
-                AdNationalitaetsKz = x.AdNationalitaetsKz,
-                Markennummern = x.ohrmarken
+                Kundenname = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p=>p.AdFirmenBezeichnung).FirstOrDefault(),
+                Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
+                Beschreibung = x.Beschreibung,
+                Datum = x.Datum,
+                Markennummer = x.MarkenNummer,
+                Markentyp = x.Markentyp,
+                KundenId = x.KundeId
 
             })
             .ToList();
@@ -67,70 +60,59 @@ namespace SchauerMarkenerkennung.MVVM.View
                     return;
                 }
 
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdFirmenBezeichnung.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x=>x.Kunde.AdFirmenBezeichnung.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    AdAdressId = x.AdAdressId,
-                    AdAdressNr = x.AdAdressNr,
-                    AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                    AdStrasse = x.AdStrasse,
-                    AdPostleitzahl = x.AdPostleitzahl,
-                    AdOrt = x.AdOrt,
-                    AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz,
-                    Markennummern = x.ohrmarken
+                    Kundenname = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdFirmenBezeichnung).FirstOrDefault(),
+                    Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
+                    Beschreibung = x.Beschreibung,
+                    Datum = x.Datum,
+                    Markennummer = x.MarkenNummer,
+                    Markentyp = x.Markentyp,
+                    KundenId = x.KundeId
 
                 })
             .ToList();
+
             }
-            else if (PLZ.IsChecked == true)
+            else if (Markentyp.IsChecked == true)
             {
                 if (searchInput == "")
                 {
                     TimeEntriesGrid();
                     return;
                 }
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdPostleitzahl.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Markentyp.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    AdAdressNr = x.AdAdressNr,
-                    AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                    AdStrasse = x.AdStrasse,
-                    AdPostleitzahl = x.AdPostleitzahl,
-                    AdOrt = x.AdOrt,
-                    AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz,
-                    Markennummern = x.ohrmarken
+                    Kundenname = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdFirmenBezeichnung).FirstOrDefault(),
+                    Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
+                    Beschreibung = x.Beschreibung,
+                    Datum = x.Datum,
+                    Markennummer = x.MarkenNummer,
+                    Markentyp = x.Markentyp,
+                    KundenId = x.KundeId
                 })
             .ToList();
 
-            }
-            else if (Adressnummer.IsChecked == true)
+            }else if(Datum.IsChecked == true)
             {
                 if (searchInput == "")
                 {
                     TimeEntriesGrid();
                     return;
                 }
-
-                try
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Datum.ToString().Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdAdressNr == (int.Parse(searchInput))).Select(x => new ExportDataGrid
-                    {
-                        AdAdressNr = x.AdAdressNr,
-                        AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                        AdStrasse = x.AdStrasse,
-                        AdPostleitzahl = x.AdPostleitzahl,
-                        AdOrt = x.AdOrt,
-                        AdLandname = x.AdLandname,
-                        AdNationalitaetsKz = x.AdNationalitaetsKz,
-                        Markennummern = x.ohrmarken
-                    })
-                .ToList();
-                }
-                catch
-                {
-                    return;
-                }
+                    Kundenname = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdFirmenBezeichnung).FirstOrDefault(),
+                    Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
+                    Beschreibung = x.Beschreibung,
+                    Datum = x.Datum,
+                    Markennummer = x.MarkenNummer,
+                    Markentyp = x.Markentyp,
+                    KundenId = x.KundeId
+                })
+            .ToList();
             }
+            
         }
 
         public void csv()
@@ -149,6 +131,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 
                 Ohrmarke ohrmarke = new Ohrmarke
                 {
+                    KundeId = ohrmarkeItem.KundenId,
                     MarkenNummer = ohrmarkeItem.Markennummer,
                     Beschreibung = ohrmarkeItem.Beschreibung,
                     Datum = ohrmarkeItem.Datum,
@@ -156,8 +139,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Markentyp = ohrmarkeItem.Markentyp,
                     
                 };
-                Kunde kundenname = _db.Kunden.Where(x => x.Id == ohrmarke.KundeId).FirstOrDefault();
-                ohrmarke.Kunde = kundenname;
+                
                 
                 list.Add(ohrmarke);
             }
@@ -177,62 +159,21 @@ namespace SchauerMarkenerkennung.MVVM.View
             if (true != dlgSave.ShowDialog()) return;
 
             string filename = dlgSave.FileName;
-            string header = "MarkenNummer;Beschreibung;Datum;Lieferant;Markentyp;Kundenname;Kundennummer";
+            string header = "KundenId;MarkenNummer;Beschreibung;Datum;Lieferant;Markentyp;Kundenname;Kundennummer";
             var writer = new StreamWriter(filename, false, Encoding.GetEncoding("ISO-8859-1"));
             writer.WriteLine(header);
 
             foreach (var item in lines)
             {
-                string kunde = item.KundeId + ";" + item.MarkenNummer + ";" + item.Beschreibung + ";" + item.Datum + ";" + item.Lieferant + ";" + item.Markentyp + ";" + item.Kunde.AdFirmenBezeichnung + ";" + item.Kunde.AdAdressNr;
+                string name = _db.Kunden.Where(x => x.Id == item.KundeId).Select(x => x.AdFirmenBezeichnung).FirstOrDefault();
+                string kundennummer = _db.Kunden.Where(x => x.Id == item.KundeId).Select(x => x.AdAdressNr).FirstOrDefault().ToString();
+                string kunde = item.KundeId + ";" + item.MarkenNummer + ";" + item.Beschreibung + ";" + item.Datum + ";" + item.Lieferant + ";" + item.Markentyp + ";" + name + ";" + kundennummer;
                 writer.WriteLine(kunde);
             }
 
             writer.Close();
         }
 
-
-        public List<string> getString()
-        {
-            List<Kunde> k = _db.Kunden.Where(x => x.AdAdressNr == 0).Select(x => x).ToList();
-            foreach (var kunde in k)
-            {
-                _db.Kunden.Remove(kunde);
-                _db.SaveChanges();
-            }
-            List<string> strings = new List<string>();
-            int count = exportDataGrid.Items.Count;
-
-
-
-            var rows = GetDataGridRows(exportDataGrid);
-
-            foreach (DataGridRow r in rows)
-            {
-                foreach (DataGridColumn column in exportDataGrid.Columns)
-                {
-                    if (column.GetCellContent(r) is TextBlock)
-                    {
-                        TextBlock cellContent = column.GetCellContent(r) as TextBlock;
-                        strings.Add(cellContent.Text);
-                    }
-                }
-            }
-
-
-
-            return strings;
-
-        }
-
-        public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
-        {
-            var itemsSource = grid.ItemsSource as IEnumerable;
-            if (null == itemsSource) yield return null;
-            foreach (var item in itemsSource)
-            {
-                var row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                if (null != row) yield return row;
-            }
-        }
+        
     }
 }
