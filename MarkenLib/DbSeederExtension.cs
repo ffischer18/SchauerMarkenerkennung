@@ -46,8 +46,8 @@ namespace MarkenLib
                 Beschreibung = "Umtausch",
                 Datum = DateTime.Now,
                 KundeId = 1,
-                Lieferant = "Seppl",
-                Markentyp = "noamla mokn"
+                Lieferant = "Schauer",
+                Markentyp = "Kuh"
             });
         }
     }
