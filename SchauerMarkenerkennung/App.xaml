@@ -30,6 +30,10 @@
                 <view:NeuerKundeView></view:NeuerKundeView>
 
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ExportOhrmarkenViewModel}">
+                <view:ExportViewOhrmarkenView></view:ExportViewOhrmarkenView>
+            </DataTemplate>
+            
         </ResourceDictionary>
         
     </Application.Resources>

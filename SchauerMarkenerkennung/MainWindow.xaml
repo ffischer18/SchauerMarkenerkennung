@@ -117,18 +117,25 @@
                              Height="50"
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"/>
-                <RadioButton Content="Export"
+                <RadioButton Content="Export/Kunden"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenueButtonTheme}"
                              Height="50"
                              Command="{Binding ExportViewCommand}"/>
+                <RadioButton Content="Export/Marken"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenueButtonTheme}"
+                             Height="50"
+                             Command="{Binding ExportOhrmarkenCommand}"/>
                 <RadioButton Content="Neue Marke scannen"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenueButtonTheme}"
                              Command="{Binding ScanViewCommand}"
                              Height="50"/>
+                
                 <RadioButton Content="Neuen Kunden erstellen"
                              Foreground="White"
                              FontSize="14"

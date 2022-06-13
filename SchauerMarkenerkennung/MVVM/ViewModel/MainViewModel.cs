@@ -17,6 +17,8 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         public RelayCommand NeuerKundeCommand { get; set; }
 
+        public RelayCommand ExportOhrmarkenCommand { get; set; }
+
 
         public HomeViewModel HomeVm { get; set; }
 
@@ -24,6 +26,9 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         public ExportViewModel ExportVm { get; set; }
 
         public NeuerKundeViewModel NeuerKundeVm { get; set; }
+
+        public ExportOhrmarkenViewModel ExportOhrmarkenViewModel { get; set; }
+
 
         private object _currentView;
 
@@ -44,7 +49,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             ExportVm = new ExportViewModel();
             ScanVm = new ScanViewModel();
             NeuerKundeVm = new NeuerKundeViewModel();
-
+            ExportOhrmarkenViewModel = new ExportOhrmarkenViewModel();
                  
 
         HomeViewCommand = new RelayCommand(x =>
@@ -52,7 +57,12 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
                 CurrentView = HomeVm;
             });
 
-            ExportViewCommand = new RelayCommand(x =>
+            ExportOhrmarkenCommand = new RelayCommand(x =>
+            {
+                CurrentView = ExportOhrmarkenViewModel;
+            });
+
+                        ExportViewCommand = new RelayCommand(x =>
             {
                 CurrentView = ExportVm;
             });
