@@ -10,6 +10,7 @@ using System.Windows.Input;
 
 namespace SchauerMarkenerkennung.MVVM.ViewModel
 {
+    //Die Klasse NeuerKundeViewModel ist dafür da um dafür zu sorgen neue Kunden hinzufügen zu können
     public class NeuerKundeViewModel : ObservableObject
     {
         private MarkenContext _db = new MarkenContext();
@@ -24,6 +25,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             _db = db;
         }
 
+        
         private int _newAdressNr = 0;
         public int NewAdressNr
         {
@@ -112,10 +114,11 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             }
         }
 
-
+        //Hier wird ein ICommand erstellt um den angelegten Kunden durch Button Click in die Datenbank zu speichern hierfür wird die Methode DoAddCustomer aufgerufen
         public ICommand AddCustomerCommand => new RelayCommand<string>(
             DoAddCustomer);
 
+        //DoAddCustomer legt mit den neu eingegebenen Daten einen neuen Kunden an und speichert diesen in die Datenbank
         private void DoAddCustomer(string obj)
         {
             _db.Kunden.Add(new Kunde

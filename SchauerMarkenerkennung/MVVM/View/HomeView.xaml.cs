@@ -19,6 +19,8 @@ namespace SchauerMarkenerkennung.MVVM.View
     /// <summary>
     /// Interaction logic for HomeView.xaml
     /// </summary>
+    
+    //Das UserControl HomeView ist dafür da um alle Marken mit ihrem zugehörigen Kunden anzuzeigen und einzelne Marken löschen zu können
     public partial class HomeView : UserControl
     {
         MarkenContext _db = new MarkenContext();
@@ -32,6 +34,8 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         }
 
+        //In der Methode fillListBoxOverViewWithCustomer werden alle Ohrenmarken mit ihrem zugehörigen Kunden in eine ListBox geschrieben
+        
         public void fillListBoxOverViewWithCustomer()
         {
             foreach (var marke in _db.Ohrmarken.ToList())
@@ -51,17 +55,17 @@ namespace SchauerMarkenerkennung.MVVM.View
         
 
        
-
+        //Die Methode Button_Click wird verwendet um die ausgewählte Ohrenmarke löschen zu können
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Zuerst holt man sich hier das Selected Item und macht es zu einer OhrenmarkeDTO
             OhrenmarkeDTO selectedItem = Kunden.Items[Kunden.SelectedIndex] as OhrenmarkeDTO;
+            //Und hier wird dann das DTO in eine Ohrmarke verwandelt
             Ohrmarke marke = _db.Ohrmarken.Where(x=>x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
            
             _db.Ohrmarken.Remove(marke);
-            
-            
             _db.SaveChanges();
-
+            //Nach dem die Ohrenmarke gelöscht wird wird die Anzeige gecleart und die Anzeige neu geladen
             Kunden.Items.Clear();
             fillListBoxOverViewWithCustomer();
         }
