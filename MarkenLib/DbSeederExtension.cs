@@ -43,7 +43,6 @@ namespace MarkenLib
                 MarkenNummer = "091063412848",
                 Beschreibung = "Umtausch",
                 Datum = DateTime.Now,
-
                 KundeAD_ADRESS_ID = "AD_11000068_ID",
                 Kommissionierer = "Schauer",
                 Markentyp = "Kuh",

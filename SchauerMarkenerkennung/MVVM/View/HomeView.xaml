@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
+       
+        <StackPanel Margin="-1,0,1,0">
+            
             <TextBlock Text="Kunden"
                    Foreground="White"
                    FontSize="30"
@@ -36,11 +38,12 @@
                     </Border.Clip>
 
 
-                    <ListBox Name="Kunden" SelectionChanged="Kunden_SelectionChanged" DisplayMemberPath="Display" Background="#3aa0ff" Margin="10,10,10,10"></ListBox>
+                    <ListBox Name="Kunden"   Background="#3aa0ff" Margin="10,10,10,10"></ListBox>
 
 
                 </Border>
             </StackPanel>
+            <Button Click="Button_Click" Content="Ausgwählte Ohrmarke löschen"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -18,6 +18,7 @@ namespace MarkenLib
         public string? Kommissionierer { get; set; }
         public string? Markentyp { get; set; }
 
+        public string Display { get => Kunde.AD_FIRMEN_BEZEICHNUNG + "; Markennummer: " + MarkenNummer; }
 
     }
 }

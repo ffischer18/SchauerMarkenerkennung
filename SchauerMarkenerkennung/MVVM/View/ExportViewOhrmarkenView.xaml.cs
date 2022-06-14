@@ -1,4 +1,5 @@
 ﻿using MarkenLib;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -64,19 +65,19 @@ namespace SchauerMarkenerkennung.MVVM.View
                     return;
                 }
 
-            //    exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
-            //    {
-            //        Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.AD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
-            //        Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.AD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
-            //        Beschreibung = x.Beschreibung,
-            //        Datum = x.Datum,
-            //        Lieferant = x.Kommissionierer,
-            //        Markennummer = x.MarkenNummer,
-            //        Markentyp = x.Markentyp,
-            //        AD_ADRESS_ID = x.AD_ADRESS_ID
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x=>x.Kunde).Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
+                {
+                    Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                    Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                   Beschreibung = x.Beschreibung,
+                    Datum = x.Datum,
+                    Lieferant = x.Kommissionierer,
+                    Markennummer = x.MarkenNummer,
+                    Markentyp = x.Markentyp,
+                    AD_ADRESS_ID = x.KundeAD_ADRESS_ID
 
-            //    })
-            //.ToList();
+                })
+            .ToList();
 
             }
             else if (Markentyp.IsChecked == true)

@@ -33,25 +33,37 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         public void fillListBoxOverViewWithCustomer()
         {
-          // Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
+           
+            foreach (var marke in _db.Ohrmarken.ToList())
+            {
+                string kundenName = _db.Kunden.Where(x=>x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x=>x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                Kunden.Items.Add(new OhrenmarkeDTO
+                {
+                    KundenName = kundenName,
+                    Markennummer = marke.MarkenNummer
+                });
+
+                string a = "";
+            }
         }
 
         
 
-        private void Kunden_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-                Kunde selectedItem = null;
-                selectedItem = Kunden.Items[Kunden.SelectedIndex] as Kunde;
-                List<Ohrmarke> ohrmarke = _db.Ohrmarken.Where(x => x.KundeAD_ADRESS_ID == selectedItem.AD_ADRESS_ID).ToList();
-                foreach (var item in ohrmarke)
-                {
-                    _db.Ohrmarken.Remove(item);
-                }
-                _db.Kunden.Remove(selectedItem);
-                _db.SaveChanges();
+       
 
-            Kunden.ItemsSource = _db.Kunden.ToList();
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OhrenmarkeDTO selectedItem = Kunden.Items[Kunden.SelectedIndex] as OhrenmarkeDTO;
+            Ohrmarke marke = _db.Ohrmarken.Where(x=>x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
+           
+            _db.Ohrmarken.Remove(marke);
             
+            
+            _db.SaveChanges();
+
+            Kunden.Items.Clear();
+            fillListBoxOverViewWithCustomer();
         }
     }
 }

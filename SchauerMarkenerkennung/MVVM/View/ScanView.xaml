@@ -23,7 +23,7 @@
 
         <Label Foreground="White" Margin="24,31,640,394" Content="Kommisionierer"/>
         <TextBox  HorizontalAlignment="Left"  Margin="32,61,0,0" TextWrapping="Wrap"
-            Name="tbLieferant" VerticalAlignment="Top" Width="120"/>
+            Name="tbKommisionier" VerticalAlignment="Top" Width="120"/>
 
         <Label Foreground="White" Margin="24,97,640,328" Content="MarkenTyp"/>
         <TextBox  HorizontalAlignment="Left"  Margin="32,127,0,0" TextWrapping="Wrap"

@@ -153,6 +153,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                ExportDataGrid kundeItem = (ExportDataGrid)item;
                 Kunde kunde = new Kunde
                 {
+                    AD_ADRESS_ID = kundeItem.AdAdressId,
                     AD_ADRESS_NR = kundeItem.AdAdressNr,
                     AD_FIRMEN_BEZEICHNUNG = kundeItem.AdFirmenBezeichnung,
                     AD_LANDNAME = kundeItem.AdLandname,
@@ -179,7 +180,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             if (true != dlgSave.ShowDialog()) return;
 
             string filename = dlgSave.FileName;
-            string header = "Id;AdAdressNr;AdFirmenBezeichnung;AdStrasse;AdPostleitzahl;AdOrt;AdLandname;AdNationalitaetsKz";
+            string header = "AdAdressId;AdAdressNr;AdFirmenBezeichnung;AdStrasse;AdPostleitzahl;AdOrt;AdLandname;AdNationalitaetsKz";
             var writer = new StreamWriter(filename, false, Encoding.GetEncoding("ISO-8859-1"));
             writer.WriteLine(header);
 

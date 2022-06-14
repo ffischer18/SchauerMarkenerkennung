@@ -93,8 +93,13 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
             if (CeckTextBoxes())
             {
-                string customerId = lbCustomers.SelectedItem + "";
-                string cusId = _db.Kunden.Where(x => x.AD_ADRESS_ID == customerId)
+                KundeDto kunde = lbCustomers.SelectedItem as KundeDto;
+                string kundId = "";
+                if (kunde != null)
+                {
+                    kundId = kunde.AD_ADRESS_ID;
+                }
+                string cusId = _db.Kunden.Where(x => x.AD_ADRESS_ID == kundId)
                     .Select(x => x.AD_ADRESS_ID)
                     .FirstOrDefault();
 
@@ -106,8 +111,8 @@ namespace SchauerMarkenerkennung.MVVM.View
                         Datum = DateTime.Now,
                         KundeAD_ADRESS_ID = cusId,
                         MarkenNummer = oNumber,
-                        Kommissionierer = tbBeschreibung.Text,
-                        Markentyp = tbBeschreibung.Text
+                        Kommissionierer = tbKommisionier.Text,
+                        Markentyp = tbType.Text
                     };
                     _db.Ohrmarken.Add(ohrmarke);
                 }
@@ -119,7 +124,7 @@ namespace SchauerMarkenerkennung.MVVM.View
         private void ClearTextBoxes()
         {
             tbBeschreibung.Text = "";
-            tbLieferant.Text = "";
+            tbKommisionier.Text = "";
             tbInput.Text = "";
             tbType.Text = "";
             lbNumbers.Items.Clear();
@@ -139,7 +144,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 lblPbeschreibung.Visibility = Visibility.Hidden;
                 allFieldsFilled = true;
             }
-            if (String.IsNullOrEmpty(tbLieferant.Text))
+            if (String.IsNullOrEmpty(tbKommisionier.Text))
             {
                 lblPlieferant.Visibility = Visibility.Visible;
                 allFieldsFilled = false;
