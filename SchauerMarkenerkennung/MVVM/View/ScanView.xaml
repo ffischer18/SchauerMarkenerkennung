@@ -42,7 +42,7 @@
                Foreground="Red" HorizontalAlignment="Left" Margin="152,57,0,0" VerticalAlignment="Top"/>
         <Label Name="lblPKunden" Visibility="Hidden" Content="Pflichtfeld!" 
                Foreground="Red" HorizontalAlignment="Left" Margin="152,253,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblPnummern" Visibility="Visible" Content="Pflichtfeld!" 
+        <Label Name="lblPnummern" Visibility="Hidden" Content="Pflichtfeld!" 
                Foreground="Red" HorizontalAlignment="Left" Margin="263,266,0,0" VerticalAlignment="Top"/>
         <DataGrid Name="dgCustomerInfo" Margin="32,301,309,104" Visibility="Hidden" IsHitTestVisible="False"/>
 
