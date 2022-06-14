@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media; 
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -34,9 +34,13 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void FillLbWithCustomers()
         {
-            foreach(string s in _db.Kunden.Select(x => x.AdAdressId).ToList())
+            foreach (var kunde in _db.Kunden.ToList())
             {
-                lbCustomers.Items.Add(s);
+                lbCustomers.Items.Add(new KundeDto
+                {
+                    AD_FIRMEN_BEZEICHNUNG = kunde.AD_FIRMEN_BEZEICHNUNG,
+                    AD_ADRESS_ID = kunde.AD_ADRESS_ID,
+                });
             }
         }
 
@@ -90,8 +94,8 @@ namespace SchauerMarkenerkennung.MVVM.View
             if (CeckTextBoxes())
             {
                 string customerId = lbCustomers.SelectedItem + "";
-                int cusId = _db.Kunden.Where(x => x.AdAdressId == customerId)
-                    .Select(x => x.Id)
+                string cusId = _db.Kunden.Where(x => x.AD_ADRESS_ID == customerId)
+                    .Select(x => x.AD_ADRESS_ID)
                     .FirstOrDefault();
 
                 foreach (string oNumber in lbNumbers.Items)
@@ -100,9 +104,9 @@ namespace SchauerMarkenerkennung.MVVM.View
                     {
                         Beschreibung = tbBeschreibung.Text,
                         Datum = DateTime.Now,
-                        KundeId = cusId,
+                        KundeAD_ADRESS_ID = cusId,
                         MarkenNummer = oNumber,
-                        Lieferant = tbBeschreibung.Text,
+                        Kommissionierer = tbBeschreibung.Text,
                         Markentyp = tbBeschreibung.Text
                     };
                     _db.Ohrmarken.Add(ohrmarke);
@@ -119,6 +123,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             tbInput.Text = "";
             tbType.Text = "";
             lbNumbers.Items.Clear();
+            dgCustomerInfo.Visibility = Visibility.Hidden;
         }
 
         private bool CeckTextBoxes()
@@ -176,6 +181,23 @@ namespace SchauerMarkenerkennung.MVVM.View
             }
 
             return allFieldsFilled;
+        }
+
+        private void lbCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selKunde = lbCustomers.SelectedItem as KundeDto;
+
+
+            dgCustomerInfo.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_ID == selKunde.AD_ADRESS_ID)
+                .Select(x => new GridKunde
+                {
+                    AD_FIRMEN_BEZEICHNUNG = x.AD_FIRMEN_BEZEICHNUNG,
+                    AD_STRASSE = x.AD_STRASSE,
+                    AD_ORT = x.AD_ORT,
+                    AD_POSTLEITZAHL = x.AD_POSTLEITZAHL
+                }).ToList();
+
+            dgCustomerInfo.Visibility = Visibility.Visible;
         }
     }
 }

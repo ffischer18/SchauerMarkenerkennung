@@ -9,7 +9,7 @@ namespace SchauerMarkenerkennung
     public class ExportOhrmarkenDataGrid
     {
         public string Markennummer { get; set; }
-        public int? KundenId { get; set; }
+        public string? AD_ADRESS_ID { get; set; }
         public string? Beschreibung { get; set; }
         public DateTime Datum { get; set; }
         public string? Lieferant { get; set; }

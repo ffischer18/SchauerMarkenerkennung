@@ -32,7 +32,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             List<Kunde> kundenFirmaNames = new List<Kunde>();
             foreach(var kunde in KundenList)
             {
-                if (kunde.AdFirmenBezeichnung.Contains("a"))
+                if (kunde.AD_FIRMEN_BEZEICHNUNG.Contains("a"))
                 {
                     kundenFirmaNames.Add(kunde);
                 }

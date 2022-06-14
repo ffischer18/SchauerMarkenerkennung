@@ -120,14 +120,14 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         {
             _db.Kunden.Add(new Kunde
             {
-                AdAdressId = AdAddressId,
-                AdAdressNr = NewAdressNr,
-                AdFirmenBezeichnung = NewCompanyDescription,
-                AdStrasse = NewStreet,
-                AdPostleitzahl = NewPLZ,
-                AdOrt = NewCity,
-                AdLandname = NewCountry,
-                AdNationalitaetsKz = NewCountryKz
+                AD_ADRESS_ID = AdAddressId,
+                AD_ADRESS_NR = NewAdressNr,
+                AD_FIRMEN_BEZEICHNUNG = NewCompanyDescription,
+                AD_STRASSE = NewStreet,
+                AD_POSTLEITZAHL = NewPLZ,
+                AD_ORT = NewCity,
+                AD_LANDNAME = NewCountry,
+                AD_NATIONALITAETS_KZ = NewCountryKz
             });
             //_db.Kunden.Add(Kunde);
             _db.SaveChanges();

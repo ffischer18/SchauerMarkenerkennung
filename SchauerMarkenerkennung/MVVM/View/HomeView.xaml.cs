@@ -33,7 +33,7 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         public void fillListBoxOverViewWithCustomer()
         {
-           Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
+          // Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
         }
 
         
@@ -42,7 +42,7 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
                 Kunde selectedItem = null;
                 selectedItem = Kunden.Items[Kunden.SelectedIndex] as Kunde;
-                List<Ohrmarke> ohrmarke = _db.Ohrmarken.Where(x => x.KundeId == selectedItem.Id).ToList();
+                List<Ohrmarke> ohrmarke = _db.Ohrmarken.Where(x => x.KundeAD_ADRESS_ID == selectedItem.AD_ADRESS_ID).ToList();
                 foreach (var item in ohrmarke)
                 {
                     _db.Ohrmarken.Remove(item);

@@ -14,28 +14,26 @@ namespace MarkenLib
         {
             modelBuilder.Entity<Kunde>().HasData(new Kunde
             {
-                Id = 1,
-                AdAdressNr = 11000069,
-                AdAdressId = "AD_11000069_ID",
-                AdFirmenBezeichnung = "SCHAUER Agrotronic GmbH",
-                AdStrasse = "Passauerstraße",
-                AdPostleitzahl = "4731",
-                AdOrt = "Prambachkirchen",
-                AdLandname = "AUSTRIA",
-                AdNationalitaetsKz = "AUT"
+                AD_ADRESS_NR = 11000069,
+                AD_ADRESS_ID = "AD_11000069_ID",
+                AD_FIRMEN_BEZEICHNUNG = "SCHAUER Agrotronic GmbH",
+                AD_STRASSE = "Passauerstraße",
+                AD_POSTLEITZAHL = "4731",
+                AD_ORT = "Prambachkirchen",
+                AD_LANDNAME = "AUSTRIA",
+                AD_NATIONALITAETS_KZ = "AUT"
             });
 
             modelBuilder.Entity<Kunde>().HasData(new Kunde
             {
-                Id = 2,
-                AdAdressNr = 11000068,
-                AdAdressId = "AD_11000068_ID",
-                AdFirmenBezeichnung = "HTL GKR",
-                AdStrasse = "Passauerstraße",
-                AdPostleitzahl = "4731",
-                AdOrt = "Prambachkirchen",
-                AdLandname = "AUSTRIA",
-                AdNationalitaetsKz = "AUT"
+                AD_ADRESS_NR = 11000068,
+                AD_ADRESS_ID = "AD_11000068_ID",
+                AD_FIRMEN_BEZEICHNUNG = "HTL GKR",
+                AD_STRASSE = "Passauerstraße",
+                AD_POSTLEITZAHL = "4731",
+                AD_ORT = "Prambachkirchen",
+                AD_LANDNAME = "AUSTRIA",
+                AD_NATIONALITAETS_KZ = "AUT"
             });
 
 
@@ -45,9 +43,11 @@ namespace MarkenLib
                 MarkenNummer = "091063412848",
                 Beschreibung = "Umtausch",
                 Datum = DateTime.Now,
-                KundeId = 1,
-                Lieferant = "Schauer",
-                Markentyp = "Kuh"
+
+                KundeAD_ADRESS_ID = "AD_11000068_ID",
+                Kommissionierer = "Schauer",
+                Markentyp = "Kuh",
+                
             });
         }
     }

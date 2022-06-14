@@ -40,13 +40,13 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         {
             exportDataGrid = _db.Kunden.Select(x => new ExportDataGrid
             {
-                AdAdressNr = x.AdAdressNr,
-                AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                AdStrasse = x.AdStrasse,
-                AdPostleitzahl = x.AdPostleitzahl,
-                AdOrt = x.AdOrt,
-                AdLandname = x.AdLandname,
-                AdNationalitaetsKz = x.AdNationalitaetsKz
+                AdAdressNr = x.AD_ADRESS_NR,
+                AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
+                AdStrasse = x.AD_STRASSE,
+                AdPostleitzahl = x.AD_POSTLEITZAHL,
+                AdOrt = x.AD_POSTLEITZAHL,
+                AdLandname = x.AD_LANDNAME,
+                AdNationalitaetsKz = x.AD_NATIONALITAETS_KZ
             })
             .ToList();
         }

@@ -39,20 +39,20 @@ namespace SchauerMarkenerkennung.MVVM.View
             List<Kunde> allCustomers = _db.Kunden.ToList();
             foreach(Kunde kunde in allCustomers)
             {
-                List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeId == kunde.Id).ToList();
+                List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeAD_ADRESS_ID == kunde.AD_ADRESS_ID).ToList();
                 kunde.Ohrmarken = allOhrmars;
             }
             
             exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
             {
-                AdAdressId = x.AdAdressId,
-                AdAdressNr = x.AdAdressNr,
-                AdFirmenBezeichnung = x.AdFirmenBezeichnung, 
-                AdStrasse = x.AdStrasse,
-                AdPostleitzahl = x.AdPostleitzahl,
-                AdOrt = x.AdOrt,
-                AdLandname = x.AdLandname,
-                AdNationalitaetsKz = x.AdNationalitaetsKz,
+                AdAdressId = x.AD_ADRESS_ID,
+                AdAdressNr = x.AD_ADRESS_NR,
+                AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG, 
+                AdStrasse = x.AD_STRASSE,
+                AdPostleitzahl = x.AD_POSTLEITZAHL,
+                AdOrt = x.AD_POSTLEITZAHL,
+                AdLandname = x.AD_LANDNAME,
+                AdNationalitaetsKz = x.AD_NATIONALITAETS_KZ,
                 Markennummern = x.ohrmarken
                 
             })
@@ -72,16 +72,16 @@ namespace SchauerMarkenerkennung.MVVM.View
                     return;
                 }
                
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdFirmenBezeichnung.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
-                    AdAdressId = x.AdAdressId,
-                    AdAdressNr = x.AdAdressNr,
-                    AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                    AdStrasse = x.AdStrasse,
-                    AdPostleitzahl = x.AdPostleitzahl,
-                    AdOrt = x.AdOrt,
-                    AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz,
+                    AdAdressId = x.AD_ADRESS_ID,
+                    AdAdressNr = x.AD_ADRESS_NR,
+                    AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
+                    AdStrasse = x.AD_STRASSE,
+                    AdPostleitzahl = x.AD_POSTLEITZAHL,
+                    AdOrt = x.AD_POSTLEITZAHL,
+                    AdLandname = x.AD_LANDNAME,
+                    AdNationalitaetsKz = x.AD_NATIONALITAETS_KZ,
                     Markennummern = x.ohrmarken
 
                 })
@@ -94,15 +94,15 @@ namespace SchauerMarkenerkennung.MVVM.View
                     TimeEntriesGrid();
                     return;
                 }
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdPostleitzahl.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_POSTLEITZAHL.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
-                    AdAdressNr = x.AdAdressNr,
-                    AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                    AdStrasse = x.AdStrasse,
-                    AdPostleitzahl = x.AdPostleitzahl,
-                    AdOrt = x.AdOrt,
-                    AdLandname = x.AdLandname,
-                    AdNationalitaetsKz = x.AdNationalitaetsKz,
+                    AdAdressNr = x.AD_ADRESS_NR,
+                    AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
+                    AdStrasse = x.AD_STRASSE,
+                    AdPostleitzahl = x.AD_POSTLEITZAHL,
+                    AdOrt = x.AD_POSTLEITZAHL,
+                    AdLandname = x.AD_LANDNAME,
+                    AdNationalitaetsKz = x.AD_NATIONALITAETS_KZ,
                     Markennummern = x.ohrmarken
                 })
             .ToList();
@@ -118,15 +118,15 @@ namespace SchauerMarkenerkennung.MVVM.View
                 
                 try
                 {
-                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AdAdressNr == (int.Parse(searchInput))).Select(x => new ExportDataGrid
+                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_NR == (int.Parse(searchInput))).Select(x => new ExportDataGrid
                     {
-                        AdAdressNr = x.AdAdressNr,
-                        AdFirmenBezeichnung = x.AdFirmenBezeichnung,
-                        AdStrasse = x.AdStrasse,
-                        AdPostleitzahl = x.AdPostleitzahl,
-                        AdOrt = x.AdOrt,
-                        AdLandname = x.AdLandname,
-                        AdNationalitaetsKz = x.AdNationalitaetsKz,
+                        AdAdressNr = x.AD_ADRESS_NR,
+                        AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
+                        AdStrasse = x.AD_STRASSE,
+                        AdPostleitzahl = x.AD_POSTLEITZAHL,
+                        AdOrt = x.AD_POSTLEITZAHL,
+                        AdLandname = x.AD_LANDNAME,
+                        AdNationalitaetsKz = x.AD_NATIONALITAETS_KZ,
                         Markennummern = x.ohrmarken
                     })
                 .ToList();
@@ -153,13 +153,13 @@ namespace SchauerMarkenerkennung.MVVM.View
                ExportDataGrid kundeItem = (ExportDataGrid)item;
                 Kunde kunde = new Kunde
                 {
-                    AdAdressNr = kundeItem.AdAdressNr,
-                    AdFirmenBezeichnung = kundeItem.AdFirmenBezeichnung,
-                    AdLandname = kundeItem.AdLandname,
-                    AdOrt = kundeItem.AdOrt,
-                    AdNationalitaetsKz = kundeItem.AdNationalitaetsKz,
-                    AdPostleitzahl = kundeItem.AdPostleitzahl,
-                    AdStrasse = kundeItem.AdStrasse,
+                    AD_ADRESS_NR = kundeItem.AdAdressNr,
+                    AD_FIRMEN_BEZEICHNUNG = kundeItem.AdFirmenBezeichnung,
+                    AD_LANDNAME = kundeItem.AdLandname,
+                    AD_ORT = kundeItem.AdOrt,
+                    AD_NATIONALITAETS_KZ = kundeItem.AdNationalitaetsKz,
+                    AD_POSTLEITZAHL = kundeItem.AdPostleitzahl,
+                    AD_STRASSE = kundeItem.AdStrasse,
                 };
                list.Add(kunde);
             }
@@ -185,7 +185,7 @@ namespace SchauerMarkenerkennung.MVVM.View
 
             foreach (var item in lines)
             {
-                string kunde = item.Id + ";" + item.AdAdressNr + ";" + item.AdFirmenBezeichnung + ";" + item.AdStrasse + ";" + item.AdPostleitzahl + ";" + item.AdOrt + ";" + item.AdLandname + ";" + item.AdNationalitaetsKz;
+                string kunde = item.AD_ADRESS_ID + ";" + item.AD_ADRESS_NR + ";" + item.AD_FIRMEN_BEZEICHNUNG + ";" + item.AD_STRASSE + ";" + item.AD_POSTLEITZAHL + ";" + item.AD_POSTLEITZAHL + ";" + item.AD_LANDNAME + ";" + item.AD_NATIONALITAETS_KZ;
                 writer.WriteLine(kunde);
             }
             
@@ -195,7 +195,7 @@ namespace SchauerMarkenerkennung.MVVM.View
        
         public List<string> getString()
         {
-            List<Kunde> k = _db.Kunden.Where(x => x.AdAdressNr == 0).Select(x => x).ToList();
+            List<Kunde> k = _db.Kunden.Where(x => x.AD_ADRESS_NR == 0).Select(x => x).ToList();
             foreach(var kunde in k)
             {
                 _db.Kunden.Remove(kunde);

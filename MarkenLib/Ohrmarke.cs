@@ -10,12 +10,12 @@ namespace MarkenLib
     public  class Ohrmarke
     {
         public int Id { get; set; } 
-        public int? KundeId { get; set; } 
+        public string KundeAD_ADRESS_ID { get; set; } 
         public Kunde Kunde { get; set; }
         public string MarkenNummer { get; set; }
         public string? Beschreibung { get; set; }
         public DateTime Datum { get; set; }
-        public string? Lieferant { get; set; }
+        public string? Kommissionierer { get; set; }
         public string? Markentyp { get; set; }
 
 
