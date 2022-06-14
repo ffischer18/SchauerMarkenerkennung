@@ -10,10 +10,10 @@
     <Grid>
 
         <TextBox Name="Search"  KeyUp="Search_KeyUp" Width="226"
-                     Height="40"
+                     FontSize="15px" Height="25px"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     Margin="48,10,0,0"
+                     Margin="48,19,0,0"
                     TextAlignment="Center"
                  
                      />

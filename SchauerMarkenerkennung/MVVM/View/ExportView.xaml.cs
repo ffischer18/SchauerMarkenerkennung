@@ -29,7 +29,9 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
             InitializeComponent();
             TimeEntriesGrid();
-
+            Firmenbezeichnung.Foreground = new SolidColorBrush(Colors.White);
+            PLZ.Foreground = new SolidColorBrush(Colors.White);
+            Adressnummer.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void TimeEntriesGrid()

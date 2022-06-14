@@ -9,7 +9,7 @@ namespace MarkenLib
 {
     public  class Ohrmarke
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public int? KundeId { get; set; } 
         public Kunde Kunde { get; set; }
         public string MarkenNummer { get; set; }

@@ -40,16 +40,18 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void Kunden_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+                Kunde selectedItem = null;
+                selectedItem = Kunden.Items[Kunden.SelectedIndex] as Kunde;
+                List<Ohrmarke> ohrmarke = _db.Ohrmarken.Where(x => x.KundeId == selectedItem.Id).ToList();
+                foreach (var item in ohrmarke)
+                {
+                    _db.Ohrmarken.Remove(item);
+                }
+                _db.Kunden.Remove(selectedItem);
+                _db.SaveChanges();
+
+            Kunden.ItemsSource = _db.Kunden.ToList();
             
-            Kunde selectedItem = Kunden.Items[Kunden.SelectedIndex] as Kunde;
-            List<Ohrmarke> ohrmarke = _db.Ohrmarken.Where(x => x.KundeId == selectedItem.Id).ToList();
-            foreach (var item in ohrmarke)
-            {
-                _db.Ohrmarken.Remove(item);
-            }
-            _db.Kunden.Remove(selectedItem);
-            _db.SaveChanges();
-            Kunden.ItemsSource = _db.Kunden.Select(x => x).ToList();
         }
     }
 }

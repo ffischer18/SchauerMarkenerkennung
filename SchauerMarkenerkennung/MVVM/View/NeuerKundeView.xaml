@@ -8,31 +8,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Foreground="White" Margin="64,75,568,345" Content="AdAdressNr"></Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,74,438,336" Text="{Binding NewAdressNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="64,75,568,345" Content="AdAddressId"/>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="62,74,438,336" Text="{Binding AdAddressId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="64,139,568,281" Content="AdFirmenBezeichnung"></Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,140,438,270" Text="{Binding NewCompanyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="64,139,568,281" Content="AdAdressNr"></Label>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="62,140,438,270" Text="{Binding NewAdressNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="62,205,633,208" Content="AdStrasse"></Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,199,438,211" Text="{Binding NewStreet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="62,205,633,208" Content="AdFirmenBez."></Label>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="62,199,438,211" Text="{Binding NewCompanyDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="66,271,615,148" Content="AdPostleitzahl"></Label>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="62,270,438,140" Text="{Binding NewPLZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="66,271,615,148" Content="AdStrasse"></Label>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="62,270,438,140" Text="{Binding NewStreet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="432,75,240,337" Content="AdOrt"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,73,68,337" Text="{Binding NewCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="432,75,240,337" Content="AdPostleitzahl"></Label>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="432,73,68,337" Text="{Binding NewPLZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="432,139,240,273" Content="AdLandName"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,140,68,270" Text="{Binding NewCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="432,139,240,273" Content="AdOrt"/>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="432,140,68,270" Text="{Binding NewCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="432,267,240,158" Content="AdAddressId"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,269,68,141" Text="{Binding AdAddressId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Foreground="White" Margin="432,204,218,206" Content="AdLandName"/>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="432,199,68,211" Text="{Binding NewCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Foreground="White" Margin="432,204,218,206" Content="AdNationalitaetsKz"/>
-        <TextBox TextAlignment="Center" Height="40px" Width="300px" Margin="432,199,68,211"/>
+        <Label Foreground="White" Margin="432,276,218,134" Content="AdNationalitaetsKz"/>
+        <TextBox TextAlignment="Center" FontSize="15px" Height="25px" Width="300px" Margin="432,271,68,139"/>
 
-        <Button Height="30px" Margin="321,376,341,44" Command="{Binding AddCustomerCommand}" >Kunden hinzufügen</Button>
-        <Label Foreground="White" Margin="594,362,78,50" Content="" RenderTransformOrigin="1.054,2.414"/>
+        <Button Height="30px" Margin="325,336,337,84" Command="{Binding AddCustomerCommand}" >Kunden hinzufügen</Button>
+        <Label Foreground="White" Margin="604,336,68,84" Content="" RenderTransformOrigin="1.054,2.414"/>
     </Grid>
 </UserControl>

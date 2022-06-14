@@ -29,6 +29,9 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
             InitializeComponent();
             TimeEntriesGrid();
+            Firmenbezeichnung.Foreground = new SolidColorBrush(Colors.White);
+            Markentyp.Foreground = new SolidColorBrush(Colors.White);
+            Datum.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void TimeEntriesGrid()
@@ -41,6 +44,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
                 Beschreibung = x.Beschreibung,
                 Datum = x.Datum,
+                Lieferant = x.Lieferant,
                 Markennummer = x.MarkenNummer,
                 Markentyp = x.Markentyp,
                 KundenId = x.KundeId
@@ -66,6 +70,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum,
+                    Lieferant = x.Lieferant,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
                     KundenId = x.KundeId
@@ -87,6 +92,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum,
+                    Lieferant = x.Lieferant,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
                     KundenId = x.KundeId
@@ -106,6 +112,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Kundennummer = _db.Kunden.Where(p => p.Id == x.KundeId).Select(p => p.AdAdressNr).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum,
+                    Lieferant = x.Lieferant,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
                     KundenId = x.KundeId
