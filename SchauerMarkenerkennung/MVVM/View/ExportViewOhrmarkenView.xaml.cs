@@ -44,7 +44,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
                 Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                 Beschreibung = x.Beschreibung,
-                Datum = x.Datum,
+                Datum = x.Datum.ToString("dd.MM.yyyy"),
                 Lieferant = x.Kommissionierer,
                 Markennummer = x.MarkenNummer,
                 Markentyp = x.Markentyp,
@@ -65,12 +65,12 @@ namespace SchauerMarkenerkennung.MVVM.View
                     return;
                 }
 
-                exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x=>x.Kunde).Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x => x.Kunde).Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
                     Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
                     Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
-                   Beschreibung = x.Beschreibung,
-                    Datum = x.Datum,
+                    Beschreibung = x.Beschreibung,
+                    Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
@@ -92,7 +92,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
                     Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
-                    Datum = x.Datum,
+                    Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
@@ -113,7 +113,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
                     Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
-                    Datum = x.Datum,
+                    Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
                     Markennummer = x.MarkenNummer,
                     Markentyp = x.Markentyp,
@@ -143,7 +143,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     KundeAD_ADRESS_ID = ohrmarkeItem.AD_ADRESS_ID,
                     MarkenNummer = ohrmarkeItem.Markennummer,
                     Beschreibung = ohrmarkeItem.Beschreibung,
-                    Datum = ohrmarkeItem.Datum,
+                    Datum = DateTime.Parse(ohrmarkeItem.Datum),
                     Kommissionierer = ohrmarkeItem.Lieferant,
                     Markentyp = ohrmarkeItem.Markentyp,
 

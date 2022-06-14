@@ -25,6 +25,7 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         public HomeView()
         {
+            _db.Database.EnsureCreated();
             InitializeComponent();
             fillListBoxOverViewWithCustomer();
 
@@ -33,7 +34,6 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         public void fillListBoxOverViewWithCustomer()
         {
-           
             foreach (var marke in _db.Ohrmarken.ToList())
             {
                 string kundenName = _db.Kunden.Where(x=>x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x=>x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
