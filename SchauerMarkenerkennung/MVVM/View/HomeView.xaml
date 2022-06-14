@@ -10,7 +10,7 @@
        
         <StackPanel Margin="-1,0,1,0">
             
-            <TextBlock Text="Kunden"
+            <TextBlock Text="Kunden/Ohrmarken"
                    Foreground="White"
                    FontSize="30"
                    HorizontalAlignment="Left"

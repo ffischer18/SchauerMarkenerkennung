@@ -108,6 +108,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     TimeEntriesGrid();
                     return;
                 }
+                List<Ohrmarke> ohrmarkes = _db.Ohrmarken.ToList();
                 exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Datum.ToString().Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
                     Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
