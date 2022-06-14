@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SchauerMarkenerkennung.MainWindow">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.View.ExportView">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACAAAAAAAAIABEAAAQABAAAABAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\ExportView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.ViewModel.ExportViewModel">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\ExportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.View.ExportViewOhrmarkenView">
+    <Position X="3" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACAAAAAAAAIABEAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\ExportViewOhrmarkenView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.ViewModel.ExportOhrmarkenViewModel">
+    <Position X="5.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\ExportOhrmarkenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.View.HomeView">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\HomeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.ViewModel.HomeViewModel">
+    <Position X="8.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.View.NeuerKundeView">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\NeuerKundeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.ViewModel.NeuerKundeViewModel">
+    <Position X="11" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAGAAABgAKIAAAQAEEBEACQIAAQABAAAAAQAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\NeuerKundeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.View.ScanView">
+    <Position X="14.25" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgAAABAAAgAAAAQEEJAAAABAAAAAQAABIAAAA=</HashCode>
+      <FileName>MVVM\View\ScanView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.ExportDataGrid">
+    <Position X="2.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAJAABAAAIQgAgAAAA=</HashCode>
+      <FileName>ExportDataGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.ExportOhrmarkenDataGrid">
+    <Position X="4.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAgAAAAgACACAEBAAAAAAAAAg=</HashCode>
+      <FileName>ExportOhrmarkenDataGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.GridKunde">
+    <Position X="7.25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAQEAAA=</HashCode>
+      <FileName>GridKunde.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.KundeDto">
+    <Position X="9.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>KundeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchauerMarkenerkennung.OhrenmarkeDTO">
+    <Position X="7.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAACAAAAAACAAAAAA=</HashCode>
+      <FileName>OhrenmarkeDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvvmTools.RelayCommand&lt;T&gt;">
+    <Position X="9.75" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchauerMarkenerkennung.MVVM.ViewModel.MainViewModel">
+    <Position X="0.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAgACEQAAAAAAAAMAIAAAAAAAACgAAAAAAAABCAA=</HashCode>
+      <FileName>MVVM\ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
