@@ -33,16 +33,17 @@ namespace SchauerMarkenerkennung.MVVM.View
             PLZ.Foreground = new SolidColorBrush(Colors.White);
             Adressnummer.Foreground = new SolidColorBrush(Colors.White);
         }
-
+        //In der Methode TimeEntriesGrid werden alle Kunden mit ihren zugehörigen Daten geladen
         private void TimeEntriesGrid()
         {
+            //Hier werden alle Ohrenmarken eines kunden rausgesucht und dem Kunden zugewiesen
             List<Kunde> allCustomers = _db.Kunden.ToList();
             foreach(Kunde kunde in allCustomers)
             {
                 List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeAD_ADRESS_ID == kunde.AD_ADRESS_ID).ToList();
                 kunde.Ohrmarken = allOhrmars;
             }
-            
+            //Hier wird dann das DataGrid mit den Kunden befüllt, indem man aus jedem Kunden in der Datenbank ein ExportDataGrid macht
             exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
             {
                 AdAdressId = x.AD_ADRESS_ID,
@@ -60,18 +61,25 @@ namespace SchauerMarkenerkennung.MVVM.View
         }
 
 
-
+        // In der Methode Search_KeyUp Methode werden die Filtermöglichkeiten programmiert
+        //Es ist Möglich nach der Firmenbezeichnung zu suchen, nach der PLZ und nach der genauen Addressnummer
         private void Search_KeyUp(object sender, KeyEventArgs e)
         {
+            // searchInput is der Text der im Suchfeld eingegeben wird
             string searchInput = Search.Text;
+            //Hier wird die Möglichkeit nach der Firmenbezeichnung zu Filtern
             if (Firmenbezeichnung.IsChecked == true)
             {
+                //Wenn der RadioButton Firmenbezeichnung ausgwählt ist aber der SearchInput Text leer is soll das DataGrid
+                //mit allen Kunden befüllt werden ohne Filtereinstellung
                 if (searchInput == "")
                 {
                     TimeEntriesGrid();
                     return;
                 }
                
+                //falls jedoch ein Text vorhanden ist wird die Datenbank durchsucht ob Kunden mit passender Firmenbezeichnung vorhanden sind
+                //wenn ja wird das DataGrid mit diesen Kunden befüllt
                 exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
                     AdAdressId = x.AD_ADRESS_ID,
@@ -87,13 +95,17 @@ namespace SchauerMarkenerkennung.MVVM.View
                 })
             .ToList();
             }
+            //Wenn der Radiobutton PLZ angeklickt ist wird nach Kunden mit der eingegebenen PLZ gesucht
             else if (PLZ.IsChecked == true)
             {
+                //Falls der RadioButton angeklickt ist jedoch kein Text vorhanden ist nachdem gesucht werden soll wird
+                //das DataGrid wieder mit allen Kunden ohne Filtereinstellung befüllt
                 if (searchInput == "")
                 {
                     TimeEntriesGrid();
                     return;
                 }
+                //Wenn jedoch ein Text vorhanden ist wird hier das DataGrid mit den passenden Kunden befüllt
                 exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_POSTLEITZAHL.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
                     AdAdressNr = x.AD_ADRESS_NR,
@@ -108,8 +120,11 @@ namespace SchauerMarkenerkennung.MVVM.View
             .ToList();
 
             }
+            //Wenn der Radiobutton Adressnummer angeklickt ist wird nach Kunden mit der eingegebenen Adressnummber gesucht
             else if (Adressnummer.IsChecked == true)
             {
+                //Falls der RadioButton angeklickt ist jedoch kein Text vorhanden ist nachdem gesucht werden soll wird
+                //das DataGrid wieder mit allen Kunden ohne Filtereinstellung befüllt
                 if (searchInput == "")
                 {
                     TimeEntriesGrid();
@@ -145,11 +160,15 @@ namespace SchauerMarkenerkennung.MVVM.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //hier werden alle Einträge des DataGrid´s in eine Liste gespeichert
             var csv = exportDataGrid.ItemsSource;
 
             List<Kunde> list = new List<Kunde>();
+            //hier werden alle Einträge des DataGrid´s durchgeschaut und anschließend ein ExportDataGrid Item erzeugt
             foreach(var item in csv)
             {
+                //aus jedem item in der Loste wird ein ExportDataGrid item gemacht und anschließend ein neuer Kunde erstellt
+                //mit den Daten die im Grid eingetragen sind
                ExportDataGrid kundeItem = (ExportDataGrid)item;
                 Kunde kunde = new Kunde
                 {
@@ -162,12 +181,14 @@ namespace SchauerMarkenerkennung.MVVM.View
                     AD_POSTLEITZAHL = kundeItem.AdPostleitzahl,
                     AD_STRASSE = kundeItem.AdStrasse,
                 };
+                //Diese neu angelegeten Kunden werden dann in eine Liste gepspeichert
                list.Add(kunde);
             }
-
+            //Anschließend wird diese Liste der Methode save mitgegben um sie in eine CSV-Datei zu speichern
             save(list);
         }
 
+        //Die Methode save sorgt dafür  das die im DataGrid angezeigten Daten in eine CSV-Datei gespeichert werden
         public void save(List<Kunde> lines)
         {
             var dlgSave = new SaveFileDialog
@@ -183,7 +204,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             string header = "AdAdressId;AdAdressNr;AdFirmenBezeichnung;AdStrasse;AdPostleitzahl;AdOrt;AdLandname;AdNationalitaetsKz";
             var writer = new StreamWriter(filename, false, Encoding.GetEncoding("ISO-8859-1"));
             writer.WriteLine(header);
-
+            //In der foreach werden alle Kunden durchgegangen und aus ihnen eine Zeile gemacht die in die CSV Datei geschrieben wird
             foreach (var item in lines)
             {
                 string kunde = item.AD_ADRESS_ID + ";" + item.AD_ADRESS_NR + ";" + item.AD_FIRMEN_BEZEICHNUNG + ";" + item.AD_STRASSE + ";" + item.AD_POSTLEITZAHL + ";" + item.AD_POSTLEITZAHL + ";" + item.AD_LANDNAME + ";" + item.AD_NATIONALITAETS_KZ;
