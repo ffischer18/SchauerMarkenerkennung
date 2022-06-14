@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Foreground="White" Margin="584,73,80,352" Content="Markennummern:"/>
-        <ListBox Name="lbNumbers" Margin="584,103,80,141" Height="200px"/>
+        <Label Foreground="White" Margin="218,28,446,395" Content="Markennummern:"/>
+        <ListBox Name="lbNumbers" Margin="218,61,446,209" Height=" 180px"/>
         <Button Name="btnStart"  Click="ButtonStart_Click" Content="Start" HorizontalAlignment="Left" 
-                Width="50" Margin="410,146,0,0" VerticalAlignment="Top"/>
+                Width="50" Margin="359,61,0,0" VerticalAlignment="Top"/>
         <Button Name="btnStop" IsEnabled="false" Click="ButtonStop_Click" Content="Stop" HorizontalAlignment="Left"
-                Width="50" Margin="466,146,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.154,-0.09"/>
+                Width="50" Margin="359,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.154,-0.09"/>
         <Button Content="Delete" Click="ButtonDel_Click" HorizontalAlignment="Left" Width="50" 
-                Margin="521,146,0,0"  VerticalAlignment="Top"/>
-        <TextBox  HorizontalAlignment="Left" IsEnabled="False" Margin="410,186,0,0" TextWrapping="Wrap"
+                Margin="359,121,0,0"  VerticalAlignment="Top"/>
+        <TextBox  HorizontalAlignment="Left" IsEnabled="False" Margin="218,61,0,0" TextWrapping="Wrap"
                   TextChanged="tbInput_TextChanged"
-                  Name="tbInput" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+                  Name="tbInput" VerticalAlignment="Top" Width="116px" PreviewTextInput="NumberValidationTextBox"/>
         <Label Foreground="White" Margin="24,225,640,200" Content="Kunden"/>
         <Button Content="Save" Click="ButtonSave_Click" HorizontalAlignment="Left" Margin="695,408,0,0" VerticalAlignment="Top" Width="68"/>
 
@@ -44,7 +44,7 @@
                Foreground="Red" HorizontalAlignment="Left" Margin="152,253,0,0" VerticalAlignment="Top"/>
         <Label Name="lblPnummern" Visibility="Hidden" Content="Pflichtfeld!" 
                Foreground="Red" HorizontalAlignment="Left" Margin="619,311,0,0" VerticalAlignment="Top"/>
-        <DataGrid Name="dgCustomerInfo" Margin="32,301,309,104" Visibility="Hidden"/>
+        <DataGrid Name="dgCustomerInfo" Margin="32,301,309,104" Visibility="Hidden" IsHitTestVisible="False"/>
 
     </Grid>
 </UserControl>
