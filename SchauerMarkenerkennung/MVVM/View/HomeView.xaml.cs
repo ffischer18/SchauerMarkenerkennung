@@ -59,15 +59,21 @@ namespace SchauerMarkenerkennung.MVVM.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Zuerst holt man sich hier das Selected Item und macht es zu einer OhrenmarkeDTO
-            OhrenmarkeDTO selectedItem = Kunden.Items[Kunden.SelectedIndex] as OhrenmarkeDTO;
-            //Und hier wird dann das DTO in eine Ohrmarke verwandelt
-            Ohrmarke marke = _db.Ohrmarken.Where(x=>x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
+            if (Kunden.SelectedIndex != -1)
+            {
+                OhrenmarkeDTO selectedItem = Kunden.Items[Kunden.SelectedIndex] as OhrenmarkeDTO;
+                //Und hier wird dann das DTO in eine Ohrmarke verwandelt
+                Ohrmarke marke = _db.Ohrmarken.Where(x => x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
+
+                _db.Ohrmarken.Remove(marke);
+                _db.SaveChanges();
+
+
+                //Nachdem die Ohrenmarke gelöscht wird wird die Anzeige gecleart und die Anzeige neu geladen
+                Kunden.Items.Clear();
+                fillListBoxOverViewWithCustomer();
+            }
            
-            _db.Ohrmarken.Remove(marke);
-            _db.SaveChanges();
-            //Nach dem die Ohrenmarke gelöscht wird wird die Anzeige gecleart und die Anzeige neu geladen
-            Kunden.Items.Clear();
-            fillListBoxOverViewWithCustomer();
         }
     }
 }

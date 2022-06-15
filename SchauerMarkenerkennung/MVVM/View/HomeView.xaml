@@ -44,6 +44,8 @@
                 </Border>
             </StackPanel>
             <Button Click="Button_Click" Content="Ausgwählte Ohrmarke löschen"/>
+            <Label Content="Label" Height="35" RenderTransformOrigin="0.499,0.532"/>
+
         </StackPanel>
     </Grid>
 </UserControl>
