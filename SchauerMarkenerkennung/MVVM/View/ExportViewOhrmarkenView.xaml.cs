@@ -41,8 +41,8 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
             exportDataGrid.ItemsSource = _db.Ohrmarken.Select(x => new ExportOhrmarkenDataGrid
             {
-                Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
-                Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                 Beschreibung = x.Beschreibung,
                 Datum = x.Datum.ToString("dd.MM.yyyy"),
                 Lieferant = x.Kommissionierer,
@@ -75,8 +75,8 @@ namespace SchauerMarkenerkennung.MVVM.View
                 //hier wird dann in der Datenbank nach Ohrmarken mit der zu suchenden Firmenbezeichnung gefiltert
                 exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x => x.Kunde).Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
-                    Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                    Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                    Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
@@ -102,8 +102,8 @@ namespace SchauerMarkenerkennung.MVVM.View
                 //mit den passenden Marken gefüllt
                 exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Markentyp.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
-                    Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                    Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                    Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
@@ -128,8 +128,8 @@ namespace SchauerMarkenerkennung.MVVM.View
                 //Hier wird geschaut ob es Einträge gibt wo das Datum dem Text Text entspricht nach dem zu suchen ist
                 exportDataGrid.ItemsSource = _db.Ohrmarken.Where(x => x.Datum.ToString().Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
-                    Kundenname = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
-                    Kundennummer = _db.Kunden.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                    Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                    Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
                     Beschreibung = x.Beschreibung,
                     Datum = x.Datum.ToString("dd.MM.yyyy"),
                     Lieferant = x.Kommissionierer,
@@ -194,8 +194,8 @@ namespace SchauerMarkenerkennung.MVVM.View
             //Mit dieser foreach wird dann die übergebenen Liste durchgegangen und mit jedem item eine zeile in die CSV geschrieben
             foreach (var item in lines)
             {
-                string name = _db.Kunden.Where(x => x.AD_ADRESS_ID == item.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
-                string kundennummer = _db.Kunden.Where(x => x.AD_ADRESS_ID == item.KundeAD_ADRESS_ID).Select(x => x.AD_ADRESS_NR).FirstOrDefault().ToString();
+                string name = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == item.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+                string kundennummer = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == item.KundeAD_ADRESS_ID).Select(x => x.AD_ADRESS_NR).FirstOrDefault().ToString();
                 string kunde = item.KundeAD_ADRESS_ID + ";" + item.MarkenNummer + ";" + item.Beschreibung + ";" + item.Datum + ";" + item.Kommissionierer + ";" + item.Markentyp + ";" + name + ";" + kundennummer;
                 writer.WriteLine(kunde);
             }

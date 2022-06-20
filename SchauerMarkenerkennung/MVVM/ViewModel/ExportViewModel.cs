@@ -38,7 +38,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         private void TimeEntriesGrid()
         {
-            exportDataGrid = _db.Kunden.Select(x => new ExportDataGrid
+            exportDataGrid = _db.ST_ADRESSEN.Select(x => new ExportDataGrid
             {
                 AdAdressNr = x.AD_ADRESS_NR,
                 AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,

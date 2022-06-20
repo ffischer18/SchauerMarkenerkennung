@@ -121,7 +121,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
         //DoAddCustomer legt mit den neu eingegebenen Daten einen neuen Kunden an und speichert diesen in die Datenbank
         private void DoAddCustomer(string obj)
         {
-            _db.Kunden.Add(new ST_ADRESSE
+            _db.ST_ADRESSEN.Add(new ST_ADRESSE
             {
                 AD_ADRESS_ID = AdAddressId,
                 AD_ADRESS_NR = NewAdressNr.ToString(),

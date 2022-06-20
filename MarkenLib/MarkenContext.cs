@@ -19,14 +19,14 @@ namespace MarkenLib
         }
 
         public DbSet<Ohrmarke> Ohrmarken { get; set; }
-        public DbSet<ST_ADRESSE> Kunden { get; set; }
+        public DbSet<ST_ADRESSE> ST_ADRESSEN { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             Console.WriteLine($"Db OnConfiguring: IsConfiguring: IsConfigured={optionsBuilder.IsConfigured}");
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionString = @"server=(LocalDB)\mssqllocaldb;attachdbfilename=C:\Temp\Ohrmarken.mdf;database=Ohrmarken;integrated security=True;MultipleActiveResultSets=True;";
+                string connectionString = @"server=(LocalDB)\mssqllocaldb;attachdbfilename=C:\Temp\Ohrmarken.mdf;database=Ohrmarken5;integrated security=True;MultipleActiveResultSets=True;";
                 Console.WriteLine($"    Using connectionString {connectionString}");
                 optionsBuilder.UseSqlServer(connectionString);
             }

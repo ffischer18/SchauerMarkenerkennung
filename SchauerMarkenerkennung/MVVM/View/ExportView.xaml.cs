@@ -37,14 +37,14 @@ namespace SchauerMarkenerkennung.MVVM.View
         private void TimeEntriesGrid()
         {
             //Hier werden alle Ohrenmarken eines kunden rausgesucht und dem Kunden zugewiesen
-            List<ST_ADRESSE> allCustomers = _db.Kunden.ToList();
+            List<ST_ADRESSE> allCustomers = _db.ST_ADRESSEN.ToList();
             foreach(ST_ADRESSE kunde in allCustomers)
             {
                 List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeAD_ADRESS_ID == kunde.AD_ADRESS_ID).ToList();
                 kunde.Ohrmarken = allOhrmars;
             }
             //Hier wird dann das DataGrid mit den Kunden befüllt, indem man aus jedem Kunden in der Datenbank ein ExportDataGrid macht
-            exportDataGrid.ItemsSource = _db.Kunden.Select(x => new ExportDataGrid
+            exportDataGrid.ItemsSource = _db.ST_ADRESSEN.Select(x => new ExportDataGrid
             {
                 AdAdressId = x.AD_ADRESS_ID,
                 AdAdressNr = x.AD_ADRESS_NR,
@@ -80,7 +80,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                
                 //falls jedoch ein Text vorhanden ist wird die Datenbank durchsucht ob Kunden mit passender Firmenbezeichnung vorhanden sind
                 //wenn ja wird das DataGrid mit diesen Kunden befüllt
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.ST_ADRESSEN.Where(x => x.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
                     AdAdressId = x.AD_ADRESS_ID,
                     AdAdressNr = x.AD_ADRESS_NR,
@@ -106,7 +106,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                     return;
                 }
                 //Wenn jedoch ein Text vorhanden ist wird hier das DataGrid mit den passenden Kunden befüllt
-                exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_POSTLEITZAHL.Contains(searchInput)).Select(x => new ExportDataGrid
+                exportDataGrid.ItemsSource = _db.ST_ADRESSEN.Where(x => x.AD_POSTLEITZAHL.Contains(searchInput)).Select(x => new ExportDataGrid
                 {
                     AdAdressNr = x.AD_ADRESS_NR,
                     AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
@@ -133,7 +133,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 
                 try
                 {
-                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_NR == searchInput).Select(x => new ExportDataGrid
+                    exportDataGrid.ItemsSource = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_NR == searchInput).Select(x => new ExportDataGrid
                     {
                         AdAdressNr = x.AD_ADRESS_NR,
                         AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
@@ -217,10 +217,10 @@ namespace SchauerMarkenerkennung.MVVM.View
        
         public List<string> getString()
         {
-            List<ST_ADRESSE> k = _db.Kunden.Where(x => Int32.Parse(x.AD_ADRESS_NR) == 0).Select(x => x).ToList();
+            List<ST_ADRESSE> k = _db.ST_ADRESSEN.Where(x => Int32.Parse(x.AD_ADRESS_NR) == 0).Select(x => x).ToList();
             foreach(var kunde in k)
             {
-                _db.Kunden.Remove(kunde);
+                _db.ST_ADRESSEN.Remove(kunde);
                 _db.SaveChanges();
             }
             List<string> strings = new List<string>();

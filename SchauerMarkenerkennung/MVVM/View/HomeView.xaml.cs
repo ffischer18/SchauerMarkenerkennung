@@ -40,7 +40,7 @@ namespace SchauerMarkenerkennung.MVVM.View
         {
             foreach (var marke in _db.Ohrmarken.ToList())
             {
-                string kundenName = _db.Kunden.Where(x=>x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x=>x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+                string kundenName = _db.ST_ADRESSEN.Where(x=>x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x=>x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
 
                 Kunden.Items.Add(new OhrenmarkeDTO
                 {

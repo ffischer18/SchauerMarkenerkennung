@@ -34,7 +34,7 @@ namespace SchauerMarkenerkennung.MVVM.View
         //um später Ohrmarken auf den selectieren Kunden zuweisen zu können.
         private void FillLbWithCustomers()
         {
-            foreach (var kunde in _db.Kunden.ToList())
+            foreach (var kunde in _db.ST_ADRESSEN.ToList())
             {
                 lbCustomers.Items.Add(new KundeDto
                 {
@@ -213,7 +213,7 @@ namespace SchauerMarkenerkennung.MVVM.View
 
             //Information wird in ein Datagrid eingetragen. Dazu wird eine eigene Klasse GridKunde verwendet. Diese
             //beinhaltet lediglich die benötigten Informationen
-            dgCustomerInfo.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_ID == selKunde.AD_ADRESS_ID)
+            dgCustomerInfo.ItemsSource = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == selKunde.AD_ADRESS_ID)
                 .Select(x => new GridKunde
                 {
                     AD_FIRMEN_BEZEICHNUNG = x.AD_FIRMEN_BEZEICHNUNG,
