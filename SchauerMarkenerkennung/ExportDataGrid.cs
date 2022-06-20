@@ -9,7 +9,7 @@ namespace SchauerMarkenerkennung
     public class ExportDataGrid
     {
         public string AdAdressId { get; set; } = null!;
-        public int AdAdressNr { get; set; }
+        public string AdAdressNr { get; set; }
         public string AdFirmenBezeichnung { get; set; } = null!;
         public string AdStrasse { get; set; } = null!;
         public string AdPostleitzahl { get; set; } = null!;

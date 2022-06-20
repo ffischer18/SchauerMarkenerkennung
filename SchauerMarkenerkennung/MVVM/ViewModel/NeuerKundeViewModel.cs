@@ -124,7 +124,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             _db.Kunden.Add(new ST_ADRESSE
             {
                 AD_ADRESS_ID = AdAddressId,
-                AD_ADRESS_NR = NewAdressNr,
+                AD_ADRESS_NR = NewAdressNr.ToString(),
                 AD_FIRMEN_BEZEICHNUNG = NewCompanyDescription,
                 AD_STRASSE = NewStreet,
                 AD_POSTLEITZAHL = NewPLZ,

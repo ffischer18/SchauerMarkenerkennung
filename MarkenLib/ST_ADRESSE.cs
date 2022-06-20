@@ -12,7 +12,7 @@ namespace MarkenLib
     {
         [Key]
         public string AD_ADRESS_ID { get; set; } = null!;
-        public int AD_ADRESS_NR { get; set; }
+        public string? AD_ADRESS_NR { get; set; }
         public string? AD_FIRMEN_BEZEICHNUNG { get; set; }
         public string? AD_STRASSE { get; set; }
         public string? AD_POSTLEITZAHL { get; set; }

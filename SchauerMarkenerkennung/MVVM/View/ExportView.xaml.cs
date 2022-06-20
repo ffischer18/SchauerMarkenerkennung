@@ -133,7 +133,7 @@ namespace SchauerMarkenerkennung.MVVM.View
                 
                 try
                 {
-                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_NR == (int.Parse(searchInput))).Select(x => new ExportDataGrid
+                    exportDataGrid.ItemsSource = _db.Kunden.Where(x => x.AD_ADRESS_NR == searchInput).Select(x => new ExportDataGrid
                     {
                         AdAdressNr = x.AD_ADRESS_NR,
                         AdFirmenBezeichnung = x.AD_FIRMEN_BEZEICHNUNG,
@@ -217,7 +217,7 @@ namespace SchauerMarkenerkennung.MVVM.View
        
         public List<string> getString()
         {
-            List<ST_ADRESSE> k = _db.Kunden.Where(x => x.AD_ADRESS_NR == 0).Select(x => x).ToList();
+            List<ST_ADRESSE> k = _db.Kunden.Where(x => Int32.Parse(x.AD_ADRESS_NR) == 0).Select(x => x).ToList();
             foreach(var kunde in k)
             {
                 _db.Kunden.Remove(kunde);
