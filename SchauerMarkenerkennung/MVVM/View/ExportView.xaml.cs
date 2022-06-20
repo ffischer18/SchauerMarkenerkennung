@@ -37,8 +37,8 @@ namespace SchauerMarkenerkennung.MVVM.View
         private void TimeEntriesGrid()
         {
             //Hier werden alle Ohrenmarken eines kunden rausgesucht und dem Kunden zugewiesen
-            List<Kunde> allCustomers = _db.Kunden.ToList();
-            foreach(Kunde kunde in allCustomers)
+            List<ST_ADRESSE> allCustomers = _db.Kunden.ToList();
+            foreach(ST_ADRESSE kunde in allCustomers)
             {
                 List<Ohrmarke> allOhrmars = _db.Ohrmarken.Where(o => o.KundeAD_ADRESS_ID == kunde.AD_ADRESS_ID).ToList();
                 kunde.Ohrmarken = allOhrmars;
@@ -163,14 +163,14 @@ namespace SchauerMarkenerkennung.MVVM.View
             //hier werden alle Einträge des DataGrid´s in eine Liste gespeichert
             var csv = exportDataGrid.ItemsSource;
 
-            List<Kunde> list = new List<Kunde>();
+            List<ST_ADRESSE> list = new List<ST_ADRESSE>();
             //hier werden alle Einträge des DataGrid´s durchgeschaut und anschließend ein ExportDataGrid Item erzeugt
             foreach(var item in csv)
             {
                 //aus jedem item in der Loste wird ein ExportDataGrid item gemacht und anschließend ein neuer Kunde erstellt
                 //mit den Daten die im Grid eingetragen sind
                ExportDataGrid kundeItem = (ExportDataGrid)item;
-                Kunde kunde = new Kunde
+                ST_ADRESSE kunde = new ST_ADRESSE
                 {
                     AD_ADRESS_ID = kundeItem.AdAdressId,
                     AD_ADRESS_NR = kundeItem.AdAdressNr,
@@ -189,7 +189,7 @@ namespace SchauerMarkenerkennung.MVVM.View
         }
 
         //Die Methode save sorgt dafür  das die im DataGrid angezeigten Daten in eine CSV-Datei gespeichert werden
-        public void save(List<Kunde> lines)
+        public void save(List<ST_ADRESSE> lines)
         {
             var dlgSave = new SaveFileDialog
             {
@@ -217,7 +217,7 @@ namespace SchauerMarkenerkennung.MVVM.View
        
         public List<string> getString()
         {
-            List<Kunde> k = _db.Kunden.Where(x => x.AD_ADRESS_NR == 0).Select(x => x).ToList();
+            List<ST_ADRESSE> k = _db.Kunden.Where(x => x.AD_ADRESS_NR == 0).Select(x => x).ToList();
             foreach(var kunde in k)
             {
                 _db.Kunden.Remove(kunde);

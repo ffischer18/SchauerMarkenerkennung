@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MarkenLib
 {
-    public class Kunde
+    public class ST_ADRESSE
     {
         [Key]
         public string AD_ADRESS_ID { get; set; } = null!;

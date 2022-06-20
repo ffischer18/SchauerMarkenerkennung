@@ -19,7 +19,7 @@ namespace MarkenLib
         }
 
         public DbSet<Ohrmarke> Ohrmarken { get; set; }
-        public DbSet<Kunde> Kunden { get; set; }
+        public DbSet<ST_ADRESSE> Kunden { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

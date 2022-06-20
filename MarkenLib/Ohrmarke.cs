@@ -11,7 +11,7 @@ namespace MarkenLib
     {
         public int Id { get; set; } 
         public string KundeAD_ADRESS_ID { get; set; } 
-        public Kunde Kunde { get; set; }
+        public ST_ADRESSE Kunde { get; set; }
         public string MarkenNummer { get; set; }
         public string? Beschreibung { get; set; }
         public DateTime Datum { get; set; }

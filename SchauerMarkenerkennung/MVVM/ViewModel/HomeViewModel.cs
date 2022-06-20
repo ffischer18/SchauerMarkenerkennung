@@ -10,7 +10,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
     public class HomeViewModel
     {
         MarkenContext _db = new MarkenContext();
-        List<Kunde> KundenList = new List<Kunde>();
+        List<ST_ADRESSE> KundenList = new List<ST_ADRESSE>();
 
         public HomeViewModel()
         {
@@ -18,9 +18,9 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
             //Test = KundenList;
         }
 
-        private List<Kunde> Test;
+        private List<ST_ADRESSE> Test;
 
-        public List<Kunde> test
+        public List<ST_ADRESSE> test
         {
             get { return Test; }
             set { Test = value; }
@@ -29,7 +29,7 @@ namespace SchauerMarkenerkennung.MVVM.ViewModel
 
         public void filterKundenFirmaName()
         {
-            List<Kunde> kundenFirmaNames = new List<Kunde>();
+            List<ST_ADRESSE> kundenFirmaNames = new List<ST_ADRESSE>();
             foreach(var kunde in KundenList)
             {
                 if (kunde.AD_FIRMEN_BEZEICHNUNG.Contains("a"))

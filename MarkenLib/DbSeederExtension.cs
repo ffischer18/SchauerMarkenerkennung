@@ -12,7 +12,7 @@ namespace MarkenLib
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Kunde>().HasData(new Kunde
+            modelBuilder.Entity<ST_ADRESSE>().HasData(new ST_ADRESSE
             {
                 AD_ADRESS_NR = 11000069,
                 AD_ADRESS_ID = "AD_11000069_ID",
@@ -24,7 +24,7 @@ namespace MarkenLib
                 AD_NATIONALITAETS_KZ = "AUT"
             });
 
-            modelBuilder.Entity<Kunde>().HasData(new Kunde
+            modelBuilder.Entity<ST_ADRESSE>().HasData(new ST_ADRESSE
             {
                 AD_ADRESS_NR = 11000068,
                 AD_ADRESS_ID = "AD_11000068_ID",
