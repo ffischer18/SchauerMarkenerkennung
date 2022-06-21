@@ -144,7 +144,10 @@ namespace SchauerMarkenerkennung.MVVM.View
                         }
                     }
                 }
-                //fillListBoxOverViewWithCustomer();
+                else
+                {
+                    fillListBoxOverViewWithCustomer();
+                }
             }
            
         }
