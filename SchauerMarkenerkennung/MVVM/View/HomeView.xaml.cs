@@ -63,17 +63,165 @@ namespace SchauerMarkenerkennung.MVVM.View
             {
                 OhrenmarkeDTO selectedItem = Kunden.Items[Kunden.SelectedIndex] as OhrenmarkeDTO;
                 //Und hier wird dann das DTO in eine Ohrmarke verwandelt
-                Ohrmarke marke = _db.Ohrmarken.Where(x => x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
+                Ohrmarke markeToDelete = _db.Ohrmarken.Where(x => x.MarkenNummer == selectedItem.Markennummer).FirstOrDefault();
 
-                _db.Ohrmarken.Remove(marke);
+                _db.Ohrmarken.Remove(markeToDelete);
                 _db.SaveChanges();
 
 
                 //Nachdem die Ohrenmarke gelöscht wird wird die Anzeige gecleart und die Anzeige neu geladen
                 Kunden.Items.Clear();
-                fillListBoxOverViewWithCustomer();
+                if (Markennummer.IsChecked == true)
+                {
+                    if (Suche.Text == "")
+                    {
+                        foreach (var marke in _db.Ohrmarken.ToList())
+                        {
+                            string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                            Kunden.Items.Add(new OhrenmarkeDTO
+                            {
+                                KundenName = kundenName,
+                                Markennummer = marke.MarkenNummer
+                            });
+
+                            string a = "";
+                        }
+                    }
+                    else
+                    {
+                        foreach (var marke in _db.Ohrmarken.ToList())
+                        {
+                            string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                            if (marke.MarkenNummer.Contains(Suche.Text))
+                            {
+                                Kunden.Items.Add(new OhrenmarkeDTO
+                                {
+                                    KundenName = kundenName,
+                                    Markennummer = marke.MarkenNummer
+                                });
+                            }
+
+                            string a = "";
+                        }
+                    }
+                }
+                else if (Firmenbezeichnung.IsChecked == true)
+                {
+                    if (Suche.Text == "")
+                    {
+                        foreach (var marke in _db.Ohrmarken.ToList())
+                        {
+                            string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                            Kunden.Items.Add(new OhrenmarkeDTO
+                            {
+                                KundenName = kundenName,
+                                Markennummer = marke.MarkenNummer
+                            });
+
+                            string a = "";
+                        }
+                    }
+                    else
+                    {
+                        foreach (var marke in _db.Ohrmarken.ToList())
+                        {
+                            string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                            if (kundenName.ToUpper().Contains(Suche.Text.ToUpper()))
+                            {
+                                Kunden.Items.Add(new OhrenmarkeDTO
+                                {
+                                    KundenName = kundenName,
+                                    Markennummer = marke.MarkenNummer
+                                });
+                            }
+
+                            string a = "";
+                        }
+                    }
+                }
+                //fillListBoxOverViewWithCustomer();
             }
            
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            Kunden.Items.Clear();
+            if (Markennummer.IsChecked==true)
+            {
+                if (Suche.Text == "")
+                {
+                    foreach (var marke in _db.Ohrmarken.ToList())
+                    {
+                        string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                        Kunden.Items.Add(new OhrenmarkeDTO
+                        {
+                            KundenName = kundenName,
+                            Markennummer = marke.MarkenNummer
+                        });
+
+                        string a = "";
+                    }
+                }
+                else
+                {
+                    foreach (var marke in _db.Ohrmarken.ToList())
+                    {
+                        string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                        if (marke.MarkenNummer.Contains(Suche.Text))
+                        {
+                        Kunden.Items.Add(new OhrenmarkeDTO
+                        {
+                            KundenName = kundenName,
+                            Markennummer = marke.MarkenNummer
+                        });
+                        }
+
+                        string a = "";
+                    }
+                }
+            }else if (Firmenbezeichnung.IsChecked==true)
+            {
+                if (Suche.Text == "")
+                {
+                    foreach (var marke in _db.Ohrmarken.ToList())
+                    {
+                        string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                        Kunden.Items.Add(new OhrenmarkeDTO
+                        {
+                            KundenName = kundenName,
+                            Markennummer = marke.MarkenNummer
+                        });
+
+                        string a = "";
+                    }
+                }
+                else
+                {
+                    foreach (var marke in _db.Ohrmarken.ToList())
+                    {
+                        string kundenName = _db.ST_ADRESSEN.Where(x => x.AD_ADRESS_ID == marke.KundeAD_ADRESS_ID).Select(x => x.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault();
+
+                        if (kundenName.ToUpper().Contains(Suche.Text.ToUpper()))
+                        {
+                            Kunden.Items.Add(new OhrenmarkeDTO
+                            {
+                                KundenName = kundenName,
+                                Markennummer = marke.MarkenNummer
+                            });
+                        }
+
+                        string a = "";
+                    }
+                }
+            }
         }
     }
 }

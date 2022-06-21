@@ -34,6 +34,7 @@ namespace SchauerMarkenerkennung.MVVM.View
             Firmenbezeichnung.Foreground = new SolidColorBrush(Colors.White);
             Markentyp.Foreground = new SolidColorBrush(Colors.White);
             Datum.Foreground = new SolidColorBrush(Colors.White);
+            OhrmarkenNummer.Foreground = new SolidColorBrush(Colors.White);
         }
 
         //TimeEntriesGrid befüllt das Datagrid mit der Anischt von den ganzen Marken mit ihrem zugehörigen Kunden
@@ -74,6 +75,28 @@ namespace SchauerMarkenerkennung.MVVM.View
                 }
                 //hier wird dann in der Datenbank nach Ohrmarken mit der zu suchenden Firmenbezeichnung gefiltert
                 exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x => x.Kunde).Where(x => x.Kunde.AD_FIRMEN_BEZEICHNUNG.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
+                {
+                    Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
+                    Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),
+                    Beschreibung = x.Beschreibung,
+                    Datum = x.Datum.ToString("dd.MM.yyyy"),
+                    Lieferant = x.Kommissionierer,
+                    Markennummer = x.MarkenNummer,
+                    Markentyp = x.Markentyp,
+                    AD_ADRESS_ID = x.KundeAD_ADRESS_ID
+
+                })
+            .ToList();
+
+            }else if (OhrmarkenNummer.IsChecked == true)
+            {
+                if (searchInput == "")
+                {
+                    TimeEntriesGrid();
+                    return;
+                }
+
+                exportDataGrid.ItemsSource = _db.Ohrmarken.Include(x => x.Kunde).Where(x => x.MarkenNummer.Contains(searchInput)).Select(x => new ExportOhrmarkenDataGrid
                 {
                     Kundenname = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_FIRMEN_BEZEICHNUNG).FirstOrDefault(),
                     Kundennummer = _db.ST_ADRESSEN.Where(p => p.AD_ADRESS_ID == x.KundeAD_ADRESS_ID).Select(p => p.AD_ADRESS_NR).FirstOrDefault().ToString(),

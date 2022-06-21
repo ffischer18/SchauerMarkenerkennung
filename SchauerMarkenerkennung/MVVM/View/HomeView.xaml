@@ -8,14 +8,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
        
-        <StackPanel Margin="-1,0,1,0">
+        <StackPanel Margin="-1,0,1,-176">
             
             <TextBlock Text="Kunden/Ohrmarken"
                    Foreground="White"
                    FontSize="30"
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
-            <StackPanel Orientation="Horizontal" Height="400" >
+            <TextBox Name="Suche" Width="256" KeyUp="TextBox_KeyUp"/>
+            <RadioButton Name="Markennummer" Width="206" Content="Ohrenmarkennummer"/>
+            <RadioButton Name="Firmenbezeichnung" Width="205" Content="Firmenbezeichnung"></RadioButton>
+            <Button Click="Button_Click" Content="Ausgwählte Ohrmarke löschen" Width="270"/>
+            <StackPanel Orientation="Horizontal" Height="427" >
 
 
                 <Border Width="725"
@@ -38,13 +42,12 @@
                     </Border.Clip>
 
 
-                    <ListBox Name="Kunden"   Background="#3aa0ff" Margin="10,10,10,10"></ListBox>
+                    <ListBox Name="Kunden"   Background="#3aa0ff" Margin="10,12,10,8"></ListBox>
 
 
                 </Border>
             </StackPanel>
-            <Button Click="Button_Click" Content="Ausgwählte Ohrmarke löschen"/>
-            <Label Content="Label" Height="35" RenderTransformOrigin="0.499,0.532"/>
+            
 
         </StackPanel>
     </Grid>
