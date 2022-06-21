@@ -30,7 +30,8 @@ namespace SchauerMarkenerkennung.MVVM.View
             _db.Database.EnsureCreated();
             InitializeComponent();
             fillListBoxOverViewWithCustomer();
-
+            Markennummer.Foreground =new SolidColorBrush(Colors.White);
+            Firmenbezeichnung.Foreground =new SolidColorBrush(Colors.White);
 
         }
 
