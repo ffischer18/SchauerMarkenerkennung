@@ -49,7 +49,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                     Markennummer = marke.MarkenNummer
                 });
 
-                string a = "";
             }
         }
 
@@ -86,7 +85,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                                 Markennummer = marke.MarkenNummer
                             });
 
-                            string a = "";
                         }
                     }
                     else
@@ -104,7 +102,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                                 });
                             }
 
-                            string a = "";
                         }
                     }
                 }
@@ -122,7 +119,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                                 Markennummer = marke.MarkenNummer
                             });
 
-                            string a = "";
                         }
                     }
                     else
@@ -187,7 +183,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                         });
                         }
 
-                        string a = "";
                     }
                 }
             }else if (Firmenbezeichnung.IsChecked==true)
@@ -204,7 +199,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                             Markennummer = marke.MarkenNummer
                         });
 
-                        string a = "";
                     }
                 }
                 else
@@ -222,7 +216,6 @@ namespace SchauerMarkenerkennung.MVVM.View
                             });
                         }
 
-                        string a = "";
                     }
                 }
             }
